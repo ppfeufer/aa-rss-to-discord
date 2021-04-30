@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
 
+## [0.1.0-beta.3] - 2021-04-30
+
+### Fixed
+
+- SQL error when there are emojis in the RSS title
+
+
 ## [0.1.0-beta.2] - 2021-04-30
 
 ### Changed
