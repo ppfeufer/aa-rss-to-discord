@@ -8,8 +8,6 @@ import feedparser
 from celery import shared_task
 
 from django.conf import settings
-from django.core.cache import cache
-from django.utils.text import slugify
 
 from allianceauth.services.hooks import get_extension_logger
 from allianceauth.services.tasks import QueueOnce
@@ -38,51 +36,62 @@ def fetch_rss() -> None:
         import aadiscordbot.tasks
 
         for rss_feed in rss_feeds:
+            logger.info(f'Fetching RSS Feed "{rss_feed.name}"')
+
+            feed = feedparser.parse(rss_feed.url)
+            latest_entry = feed.entries[0]
+
+            feed_entry_title = latest_entry.title
+            feed_entry_link = latest_entry.link
+            feed_entry_time = latest_entry.get("published", latest_entry.updated)
+            feed_entry_guid = latest_entry.id
+
+            post_entry = True
+
             try:
-                logger.info(f"Fetching RSS Feed {rss_feed.name}")
-
-                rss_cache_key = slugify(rss_feed.url, allow_unicode=True)
-
-                feed = feedparser.parse(rss_feed.url)
-                latest_entry = feed.entries[0]
-                feed_entry_guid = latest_entry.guid
+                last_item = RssFeeds.get_last_item(self=rss_feed)
 
                 if (
-                    cache.get(rss_cache_key + "_feed_entry_guid") is None
-                    or cache.get(rss_cache_key + "_feed_entry_guid") != feed_entry_guid
+                    last_item
+                    and last_item.rss_item_time == feed_entry_time
+                    and last_item.rss_item_title == feed_entry_title
+                    and last_item.rss_item_link == feed_entry_link
+                    and last_item.rss_item_guid == feed_entry_guid
                 ):
-                    post_entry = True
-
-                    # Filter might come later ...
-                    # if "filter" in rss_feed:
-                    #     if rss_feed.filter in latest_entry.description:
-                    #         post_entry = True
-                    # else:
-                    #     post_entry = True
-
-                    if post_entry is True:
-                        logger.info(
-                            "New entry found, posting to Discord channel "
-                            f'"{rss_feed.discord_channel.channel}"'
-                        )
-
-                        feed_title = rss_feed.name
-                        feed_entry_link = latest_entry.link
-
-                        discord_message = f"**{feed_title}**\n{feed_entry_link}"
-
-                        aadiscordbot.tasks.send_channel_message_by_discord_id.delay(
-                            rss_feed.discord_channel.channel,
-                            discord_message,
-                            embed=False,
-                        )
-
-                        cache.set(
-                            rss_cache_key + "_feed_entry_guid", feed_entry_guid, None
-                        )
+                    logger.info(
+                        f'News item "{feed_entry_title}" for RSS Feed "{rss_feed.name}" '
+                        "has already been posted to your Discord"
+                    )
+                    post_entry = False
             except Exception as e:
+                last_item = False
                 logger.info(str(e))
                 pass
+
+            if post_entry is True:
+                logger.info(
+                    "New entry found, posting to Discord channel "
+                    f"{rss_feed.discord_channel}"
+                )
+
+                if last_item is not False:
+                    RssFeeds.remove_last_item(self=rss_feed)
+
+                RssFeeds.set_last_item(
+                    self=rss_feed,
+                    time=feed_entry_time,
+                    link=feed_entry_link,
+                    title=feed_entry_title,
+                    guid=feed_entry_guid,
+                )
+
+                discord_message = f"**{rss_feed.name}**\n{feed_entry_link}"
+
+                aadiscordbot.tasks.send_channel_message_by_discord_id.delay(
+                    rss_feed.discord_channel.channel,
+                    discord_message,
+                    embed=False,
+                )
     else:
         logging.info(
             "AA Discordbot (https://github.com/pvyParts/allianceauth-discordbot) "
