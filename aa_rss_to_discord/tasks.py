@@ -8,7 +8,7 @@ import re
 import feedparser
 from celery import shared_task
 
-from django.conf import settings
+from django.apps import apps
 
 from allianceauth.services.hooks import get_extension_logger
 from allianceauth.services.tasks import QueueOnce
@@ -70,7 +70,7 @@ def fetch_rss() -> None:
 
     rss_feeds = RssFeeds.objects.all()
 
-    if "aadiscordbot" in settings.INSTALLED_APPS and rss_feeds:
+    if apps.is_installed("aadiscordbot") and rss_feeds:
         import aadiscordbot.tasks
 
         for rss_feed in rss_feeds:
