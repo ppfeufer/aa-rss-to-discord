@@ -60,11 +60,10 @@ Configure your AA settings (`local.py`) as follows:
 - Add `"aa_rss_to_discord",` to `INSTALLED_APPS`
 - Add the scheduled task
   ```python
-  if "aa_rss_to_discord" in INSTALLED_APPS:
-      CELERYBEAT_SCHEDULE["aa_rss_to_discord_fetch_rss"] = {
-          "task": "aa_rss_to_discord.tasks.fetch_rss",
-          "schedule": crontab(minute="*/5"),
-      }
+  CELERYBEAT_SCHEDULE["aa_rss_to_discord_fetch_rss"] = {
+      "task": "aa_rss_to_discord.tasks.fetch_rss",
+      "schedule": crontab(minute="*/5"),
+  }
   ```
 
 
