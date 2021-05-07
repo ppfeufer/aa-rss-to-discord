@@ -97,8 +97,8 @@ def fetch_rss() -> None:
                     and last_item.rss_item_guid == feed_entry_guid
                 ):
                     logger.info(
-                        f'News item "{feed_entry_title}" for RSS Feed "{rss_feed.name}" '
-                        "has already been posted to your Discord"
+                        f'News item "{feed_entry_title}" for RSS Feed '
+                        f'"{rss_feed.name}" has already been posted to your Discord'
                     )
                     post_entry = False
             except Exception as e:
