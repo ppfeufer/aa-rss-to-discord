@@ -68,7 +68,7 @@ def fetch_rss() -> None:
     :rtype:
     """
 
-    rss_feeds = RssFeeds.objects.all()
+    rss_feeds = RssFeeds.objects.select_enabled()
 
     if apps.is_installed("aadiscordbot") and rss_feeds:
         import aadiscordbot.tasks

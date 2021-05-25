@@ -7,6 +7,8 @@ from aadiscordbot.models import Channels
 from django.db import models
 from django.utils.translation import gettext as _
 
+from aa_rss_to_discord.managers import RssFeedsManager
+
 
 class RssFeeds(models.Model):
     """
@@ -23,6 +25,9 @@ class RssFeeds(models.Model):
         default=None,
         on_delete=models.SET_NULL,
     )
+    enabled = models.BooleanField(default=True)
+
+    objects = RssFeedsManager()
 
     class Meta:
         """
@@ -38,7 +43,7 @@ class RssFeeds(models.Model):
 
     def get_last_item(self):
         """
-        get the last item for this RSS feed from DB
+        Get the last item for this RSS feed from DB
         :return:
         :rtype:
         """
@@ -47,7 +52,7 @@ class RssFeeds(models.Model):
 
     def set_last_item(self, time, title, link, guid):
         """
-        set the last item for this RSS feed
+        Set the last item for this RSS feed
         :param time:
         :type time:
         :param title:
@@ -68,13 +73,17 @@ class RssFeeds(models.Model):
 
     def remove_last_item(self):
         """
-        remove the last item for this RSS feed
+        Remove the last item for this RSS feed
         """
 
         LastItem.objects.filter(rss_feed=self).delete()
 
 
 class LastItem(models.Model):
+    """
+    Model :: LastItem
+    """
+
     rss_feed = models.ForeignKey(
         RssFeeds,
         related_name="+",
@@ -93,3 +102,6 @@ class LastItem(models.Model):
         default_permissions = ()
         verbose_name = _("Last Item")
         verbose_name_plural = _("Last Items")
+
+    def __str__(self):
+        return f'RSS Entry "{self.rss_item_title}"'

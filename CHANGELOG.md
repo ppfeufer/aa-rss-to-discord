@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
 
+## [0.1.0-beta.5] - 2021-05-25
+
+### Added
+
+- Switch to enable/disable RSS feeds in admin interface
+
+### Changed
+
+- Cleaned up filter in admin interface
+
+
 ## [0.1.0-beta.4] - 2021-05-05
 
 ### Fixed
