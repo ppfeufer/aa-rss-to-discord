@@ -14,4 +14,4 @@ class AaRssToDiscordConfig(AppConfig):
 
     name = "aa_rss_to_discord"
     label = "aa_rss_to_discord"
-    verbose_name = "RSS to Discord v{}".format(__version__)
+    verbose_name = f"RSS to Discord v{__version__}"
