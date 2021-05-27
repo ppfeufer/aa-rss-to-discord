@@ -41,43 +41,6 @@ class RssFeeds(models.Model):
     def __str__(self):
         return f'RSS Feed "{self.name}" for channel {self.discord_channel}'
 
-    def get_last_item(self):
-        """
-        Get the last item for this RSS feed from DB
-        :return:
-        :rtype:
-        """
-
-        return LastItem.objects.get(rss_feed=self)
-
-    def set_last_item(self, time, title, link, guid):
-        """
-        Set the last item for this RSS feed
-        :param time:
-        :type time:
-        :param title:
-        :type title:
-        :param link:
-        :type link:
-        :param guid:
-        :type guid:
-        """
-
-        LastItem(
-            rss_feed=self,
-            rss_item_time=time,
-            rss_item_title=title,
-            rss_item_link=link,
-            rss_item_guid=guid,
-        ).save()
-
-    def remove_last_item(self):
-        """
-        Remove the last item for this RSS feed
-        """
-
-        LastItem.objects.filter(rss_feed=self).delete()
-
 
 class LastItem(models.Model):
     """
