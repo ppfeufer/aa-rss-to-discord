@@ -14,19 +14,16 @@ from allianceauth.services.hooks import get_extension_logger
 from allianceauth.services.tasks import QueueOnce
 
 from aa_rss_to_discord import __title__
-from aa_rss_to_discord.models import RssFeeds
+from aa_rss_to_discord.models import LastItem, RssFeeds
 from aa_rss_to_discord.utils import LoggerAddTag
 
 logger = LoggerAddTag(get_extension_logger(__name__), __title__)
 
-# poll every x seconds
-RSS_POLL_TIME = 300
-
 
 def remove_emoji(string):
     """
-    removing these dumb as fuck emojis from the title string
-    like honestly, who in the hell needs that shit?
+    Removing these dumb as fuck emojis from the title string.
+    Like honestly, who in the hell needs that shit?
     :param string:
     :type string:
     :return:
@@ -35,11 +32,11 @@ def remove_emoji(string):
 
     emoji_pattern = re.compile(
         "["
-        "\U0001F600-\U0001F64F"  # emoticons
-        "\U0001F300-\U0001F5FF"  # symbols & pictographs
-        "\U0001F680-\U0001F6FF"  # transport & map symbols
-        "\U0001F1E0-\U0001F1FF"  # flags (iOS)
-        "\U00002500-\U00002BEF"  # chinese char
+        "\U0001F600-\U0001F64F"  # Emoticons
+        "\U0001F300-\U0001F5FF"  # Symbols & pictographs
+        "\U0001F680-\U0001F6FF"  # Transport & map symbols
+        "\U0001F1E0-\U0001F1FF"  # Flags (iOS)
+        "\U00002500-\U00002BEF"  # Chinese char
         "\U00002702-\U000027B0"
         "\U00002702-\U000027B0"
         "\U000024C2-\U0001F251"
@@ -51,7 +48,7 @@ def remove_emoji(string):
         "\u23cf"
         "\u23e9"
         "\u231a"
-        "\ufe0f"  # dingbats
+        "\ufe0f"  # Dingbats
         "\u3030"
         "]+",
         flags=re.UNICODE,
@@ -63,7 +60,7 @@ def remove_emoji(string):
 @shared_task(**{"base": QueueOnce})
 def fetch_rss() -> None:
     """
-    fetch RSS feeds and post to Discord
+    Fetch RSS feeds and post to Discord
     :return:
     :rtype:
     """
@@ -85,9 +82,10 @@ def fetch_rss() -> None:
             feed_entry_guid = latest_entry.id
 
             post_entry = True
+            has_last_item = True
 
             try:
-                last_item = RssFeeds.get_last_item(self=rss_feed)
+                last_item = LastItem.objects.get(rss_feed=rss_feed)
 
                 if (
                     last_item
@@ -96,14 +94,13 @@ def fetch_rss() -> None:
                     and last_item.rss_item_link == feed_entry_link
                     and last_item.rss_item_guid == feed_entry_guid
                 ):
-                    logger.info(
+                    logger.debug(
                         f'News item "{feed_entry_title}" for RSS Feed '
                         f'"{rss_feed.name}" has already been posted to your Discord'
                     )
                     post_entry = False
-            except Exception as e:
-                last_item = False
-                logger.info(str(e))
+            except LastItem.DoesNotExist:
+                has_last_item = False
                 pass
 
             if post_entry is True:
@@ -112,16 +109,22 @@ def fetch_rss() -> None:
                     f"{rss_feed.discord_channel}"
                 )
 
-                if last_item is not False:
-                    RssFeeds.remove_last_item(self=rss_feed)
-
-                RssFeeds.set_last_item(
-                    self=rss_feed,
-                    time=feed_entry_time,
-                    link=feed_entry_link,
-                    title=feed_entry_title,
-                    guid=feed_entry_guid,
-                )
+                if has_last_item is True:
+                    # Update the last item ...
+                    last_item.rss_item_time = feed_entry_time
+                    last_item.rss_item_title = feed_entry_title
+                    last_item.rss_item_link = feed_entry_link
+                    last_item.rss_item_guid = feed_entry_guid
+                    last_item.save()
+                else:
+                    # Set the last item ...
+                    LastItem(
+                        rss_feed=rss_feed,
+                        rss_item_time=feed_entry_time,
+                        rss_item_title=feed_entry_title,
+                        rss_item_link=feed_entry_link,
+                        rss_item_guid=feed_entry_guid,
+                    ).save()
 
                 discord_message = f"**{rss_feed.name}**\n{feed_entry_link}"
 
