@@ -101,7 +101,6 @@ def fetch_rss() -> None:
                     post_entry = False
             except LastItem.DoesNotExist:
                 has_last_item = False
-                pass
 
             if post_entry is True:
                 logger.info(
