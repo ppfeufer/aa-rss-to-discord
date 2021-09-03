@@ -32,6 +32,7 @@ project_install_requirements = [
     "allianceauth>=2.8.0",
     "allianceauth-discordbot",
     "feedparser",
+    "discord.py",
 ]
 project_python_requires = "~=3.6"
 project_classifiers = [
