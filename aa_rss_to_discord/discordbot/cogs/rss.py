@@ -184,7 +184,6 @@ class Rss(commands.Cog):
         if isinstance(
             error, discord.ext.commands.errors.MissingRequiredArgument
         ) or isinstance(error, discord.ext.commands.CommandInvokeError):
-            pass
             await ctx.send(
                 "You didn't provide a numeric value for the RSS/Atom ID you want to "
                 "enable.\n\nExample:\n```!rss_enable 5```To enable RSS/Atom feed wth "
@@ -224,7 +223,6 @@ class Rss(commands.Cog):
         if isinstance(
             error, discord.ext.commands.errors.MissingRequiredArgument
         ) or isinstance(error, discord.ext.commands.CommandInvokeError):
-            pass
             await ctx.send(
                 "You didn't provide a numeric value for the RSS/Atom ID you want to "
                 "enable.\n\nExample:\n```!rss_disable 5```To disable RSS/Atom feed "
