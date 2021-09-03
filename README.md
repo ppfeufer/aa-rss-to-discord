@@ -19,6 +19,7 @@ A simple app to post selected RSS feeds to your Discord.
   - [Step 2 - Configure Alliance Auth](#step-2---configure-alliance-auth)
   - [Step 3 - Finalize the Installation](#step-3---finalize-the-installation)
   - [Step 4 - Configure your RSS Feeds](#step-4---configure-your-rss-feeds)
+- [Discord Bot Commands](#discord-bot-commands)
 - [Updating](#updating)
 
 
@@ -87,6 +88,18 @@ When done, you can set up your RSS feeds. This can be done in the setting of thi
 app, still in your admin backend. Create a new RSS Feed entry, enter the name, url
 and select the Discord channel it should be posted to. Once done, save it.
 
+
+## Discord Bot Commands
+
+The following commands are available for the Discord bot to manage RSS/Atom feeds:
+
+| Command | Options | What it does |
+|:---|:---|:---|
+| `!rss_add <rss_url> <rss_name>` | - `rss_url` - The URL of the RSS/Atom feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom fedd to the current channel |
+| `!rss_delete <rss_feed_id>` | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove |  Remove a RSS/Atom feed from the current Discord channel |
+| `!rss_disable <rss_feed_id>` | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable |  Disable an enabled RSS/Atom feed for the current Discord channel |
+| `!rss_enable <rss_feed_id>` | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable |  Enable a disabled RSS/Atom feed for the current Discord channel |
+| `!rss_list` | None |  List all RSS/Atom feeds for the current Discord channel |
 
 ## Updating
 
