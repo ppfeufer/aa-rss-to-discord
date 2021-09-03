@@ -36,7 +36,7 @@ A simple app to post selected RSS feeds to your Discord.
 
 ### Step 0.5 - Install AA-Discordbot
 
-In order for this app to function, you need to install and configure
+In order for this app to work, you need to install and configure
 [AA-Discordbot](https://github.com/pvyParts/allianceauth-discordbot) first. Read the
 instructions how to do so in the README of AA-Discordbot.
 
