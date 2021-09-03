@@ -24,3 +24,8 @@ compiletranslationfiles:
 
 graph_models:
 	python ../myauth/manage.py graph_models $(package) --arrow-shape normal -o $(appname)-models.png
+
+build_test:
+	rm -rfv dist && \
+	rm -rfv build && \
+	python3 setup.py sdist bdist_wheel
