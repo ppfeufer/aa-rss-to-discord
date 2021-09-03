@@ -145,7 +145,6 @@ class Rss(commands.Cog):
         if isinstance(
             error, discord.ext.commands.errors.MissingRequiredArgument
         ) or isinstance(error, discord.ext.commands.CommandInvokeError):
-            pass
             await ctx.send(
                 "You didn't provide a numeric value for the RSS/Atom ID you want to "
                 "remove.\n\nExample:\n```!rss_delete 5```To remove RSS/Atom feed "
