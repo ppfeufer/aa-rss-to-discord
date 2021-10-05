@@ -74,35 +74,51 @@ def fetch_rss() -> None:
             logger.info(f'Fetching RSS Feed "{rss_feed.name}"')
 
             feed = feedparser.parse(rss_feed.url)
-            latest_entry = feed.entries[0]
 
-            feed_entry_title = remove_emoji(latest_entry.title)
-            feed_entry_link = latest_entry.link
-            feed_entry_time = latest_entry.get("published", latest_entry.updated)
-            feed_entry_guid = latest_entry.id
-
-            post_entry = True
-            has_last_item = True
+            feed_entry_title = "No title"
+            feed_entry_link = None
+            feed_entry_time = None
+            feed_entry_guid = None
+            has_last_item = False
+            last_item = None
 
             try:
-                last_item = LastItem.objects.get(rss_feed=rss_feed)
+                latest_entry = feed.entries[0]
 
-                if (
-                    last_item
-                    and last_item.rss_item_time == feed_entry_time
-                    and last_item.rss_item_title == feed_entry_title
-                    and last_item.rss_item_link == feed_entry_link
-                    and last_item.rss_item_guid == feed_entry_guid
-                ):
-                    logger.debug(
-                        f'News item "{feed_entry_title}" for RSS Feed '
-                        f'"{rss_feed.name}" has already been posted to your Discord'
-                    )
-                    post_entry = False
-            except LastItem.DoesNotExist:
-                has_last_item = False
+                feed_entry_title = remove_emoji(latest_entry.get("title", "No title"))
+                feed_entry_link = latest_entry.get("link", None)
+                feed_entry_time = latest_entry.get("published", latest_entry.updated)
+                feed_entry_guid = latest_entry.get("id", None)
 
-            if post_entry is True:
+                post_entry = True
+                has_last_item = True
+
+                try:
+                    last_item = LastItem.objects.get(rss_feed=rss_feed)
+
+                    if (
+                        last_item
+                        and last_item.rss_item_time == feed_entry_time
+                        and last_item.rss_item_title == feed_entry_title
+                        and last_item.rss_item_link == feed_entry_link
+                        and last_item.rss_item_guid == feed_entry_guid
+                    ):
+                        logger.debug(
+                            f'News item "{feed_entry_title}" for RSS Feed '
+                            f'"{rss_feed.name}" has already been posted to your Discord'
+                        )
+                        post_entry = False
+                except LastItem.DoesNotExist:
+                    has_last_item = False
+
+            except IndexError:
+                post_entry = False
+
+            if (
+                post_entry is True
+                and feed_entry_link is not None
+                and feed_entry_guid is not None
+            ):
                 logger.info(
                     "New entry found, posting to Discord channel "
                     f"{rss_feed.discord_channel}"
