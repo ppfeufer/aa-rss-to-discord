@@ -65,89 +65,94 @@ def fetch_rss() -> None:
     :rtype:
     """
 
-    rss_feeds = RssFeeds.objects.select_enabled()
-
-    if apps.is_installed("aadiscordbot") and rss_feeds:
+    if apps.is_installed("aadiscordbot"):
         import aadiscordbot.tasks
 
-        for rss_feed in rss_feeds:
-            logger.info(f'Fetching RSS Feed "{rss_feed.name}"')
+        rss_feeds = RssFeeds.objects.select_enabled()
 
-            feed = feedparser.parse(rss_feed.url)
+        if rss_feeds:
+            for rss_feed in rss_feeds:
+                logger.info(f'Fetching RSS Feed "{rss_feed.name}"')
 
-            feed_entry_title = "No title"
-            feed_entry_link = None
-            feed_entry_time = None
-            feed_entry_guid = None
-            has_last_item = False
-            last_item = None
+                feed = feedparser.parse(rss_feed.url)
 
-            try:
-                latest_entry = feed.entries[0]
-
-                feed_entry_title = remove_emoji(latest_entry.get("title", "No title"))
-                feed_entry_link = latest_entry.get("link", None)
-                feed_entry_time = latest_entry.get("published", latest_entry.updated)
-                feed_entry_guid = latest_entry.get("id", None)
-
-                post_entry = True
-                has_last_item = True
+                feed_entry_title = "No title"
+                feed_entry_link = None
+                feed_entry_time = None
+                feed_entry_guid = None
+                has_last_item = False
+                last_item = None
 
                 try:
-                    last_item = LastItem.objects.get(rss_feed=rss_feed)
+                    latest_entry = feed.entries[0]
 
-                    if (
-                        last_item
-                        and last_item.rss_item_time == feed_entry_time
-                        and last_item.rss_item_title == feed_entry_title
-                        and last_item.rss_item_link == feed_entry_link
-                        and last_item.rss_item_guid == feed_entry_guid
-                    ):
-                        logger.debug(
-                            f'News item "{feed_entry_title}" for RSS Feed '
-                            f'"{rss_feed.name}" has already been posted to your Discord'
-                        )
-                        post_entry = False
-                except LastItem.DoesNotExist:
-                    has_last_item = False
+                    feed_entry_title = remove_emoji(
+                        latest_entry.get("title", "No title")
+                    )
+                    feed_entry_link = latest_entry.get("link", None)
+                    feed_entry_time = latest_entry.get(
+                        "published", latest_entry.updated
+                    )
+                    feed_entry_guid = latest_entry.get("id", None)
 
-            except IndexError:
-                post_entry = False
+                    post_entry = True
+                    has_last_item = True
 
-            if (
-                post_entry is True
-                and feed_entry_link is not None
-                and feed_entry_guid is not None
-            ):
-                logger.info(
-                    "New entry found, posting to Discord channel "
-                    f"{rss_feed.discord_channel}"
-                )
+                    try:
+                        last_item = LastItem.objects.get(rss_feed=rss_feed)
 
-                if has_last_item is True:
-                    # Update the last item ...
-                    last_item.rss_item_time = feed_entry_time
-                    last_item.rss_item_title = feed_entry_title
-                    last_item.rss_item_link = feed_entry_link
-                    last_item.rss_item_guid = feed_entry_guid
-                    last_item.save()
-                else:
-                    # Set the last item ...
-                    LastItem(
-                        rss_feed=rss_feed,
-                        rss_item_time=feed_entry_time,
-                        rss_item_title=feed_entry_title,
-                        rss_item_link=feed_entry_link,
-                        rss_item_guid=feed_entry_guid,
-                    ).save()
+                        if (
+                            last_item
+                            and last_item.rss_item_time == feed_entry_time
+                            and last_item.rss_item_title == feed_entry_title
+                            and last_item.rss_item_link == feed_entry_link
+                            and last_item.rss_item_guid == feed_entry_guid
+                        ):
+                            logger.debug(
+                                f'News item "{feed_entry_title}" for RSS Feed '
+                                f'"{rss_feed.name}" has already been posted to your Discord'
+                            )
+                            post_entry = False
+                    except LastItem.DoesNotExist:
+                        has_last_item = False
 
-                discord_message = f"**{rss_feed.name}**\n{feed_entry_link}"
+                except IndexError:
+                    post_entry = False
 
-                aadiscordbot.tasks.send_channel_message_by_discord_id.delay(
-                    rss_feed.discord_channel.channel,
-                    discord_message,
-                    embed=False,
-                )
+                if (
+                    post_entry is True
+                    and feed_entry_link is not None
+                    and feed_entry_guid is not None
+                ):
+                    logger.info(
+                        "New entry found, posting to Discord channel "
+                        f"{rss_feed.discord_channel}"
+                    )
+
+                    if has_last_item is True:
+                        # Update the last item ...
+                        last_item.rss_item_time = feed_entry_time
+                        last_item.rss_item_title = feed_entry_title
+                        last_item.rss_item_link = feed_entry_link
+                        last_item.rss_item_guid = feed_entry_guid
+                        last_item.save()
+                    else:
+                        # Set the last item ...
+                        LastItem(
+                            rss_feed=rss_feed,
+                            rss_item_time=feed_entry_time,
+                            rss_item_title=feed_entry_title,
+                            rss_item_link=feed_entry_link,
+                            rss_item_guid=feed_entry_guid,
+                        ).save()
+
+                    discord_message = f"**{rss_feed.name}**\n{feed_entry_link}"
+
+                    aadiscordbot.tasks.send_channel_message_by_discord_id.delay(
+                        rss_feed.discord_channel.channel,
+                        discord_message,
+                        embed=False,
+                    )
     else:
         logging.info(
             "AA Discordbot (https://github.com/pvyParts/allianceauth-discordbot) "
