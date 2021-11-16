@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 ## [1.2.0] - 2021-11-16
 
+### Added
+
+- Basic test suite
+
 ### Changed
 
 - Minimum requirements
