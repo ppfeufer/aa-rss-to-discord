@@ -23,30 +23,25 @@ project_license = "GPLv3"
 project_author = "Peter Pfeufer"
 project_author_email = "development@ppfeufer.de"
 project_git_url = "https://github.com/ppfeufer/aa-rss-to-discord"
-project_issues_url = "https://github.com/ppfeufer/aa-rss-to-discord/issues"
-project_changelog_url = (
-    "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CHANGELOG.md"
-)
+project_issues_url = f"{project_git_url}/issues"
+project_changelog_url = f"{project_git_url}/blob/master/CHANGELOG.md"
 project_homepage_url = project_git_url
 project_install_requirements = [
-    "allianceauth>=2.8.0",
+    "allianceauth>=2.9.0",
     "allianceauth-discordbot",
     "feedparser",
     "discord.py",
 ]
-project_python_requires = "~=3.6"
+project_python_requires = "~=3.8"
 project_classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
-    "Framework :: Django :: 3.1",
     "Framework :: Django :: 3.2",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Topic :: Internet :: WWW/HTTP",
@@ -57,7 +52,7 @@ project_classifiers = [
 project_urls = {
     "Issue / Bug Reports": project_issues_url,
     "Changelog": project_changelog_url,
-    "Release Notes": project_git_url + "/releases/tag/v" + __version__,
+    "Release Notes": f"{project_git_url}/releases/tag/v{__version__}",
     "Git Repository": project_git_url,
 }
 
