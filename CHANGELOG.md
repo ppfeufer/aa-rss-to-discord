@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
 
+## [1.3.0] - 2021-11-30
+
+### Changed
+
+- Minimum requirements
+  - Python 3.7
+  - Alliance Auth v2.9.3
+
+
 ## [1.2.1] - 2021-11-17
 
 ### Fixed
