@@ -2,8 +2,10 @@
 Django admin declarations
 """
 
+# Django
 from django.contrib import admin
 
+# AA RSS to Discord
 from aa_rss_to_discord.models import RssFeeds
 
 

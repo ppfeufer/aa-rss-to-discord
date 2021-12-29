@@ -2,16 +2,20 @@
 "RSS" cog for discordbot - https://github.com/pvyParts/allianceauth-discordbot
 """
 
+# Standard Library
 import logging
 
+# Third Party
 import discord
 from aadiscordbot.cogs.utils.decorators import sender_is_admin
 from aadiscordbot.models import Channels, Servers
 from discord.ext import commands
 
+# Django
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
 
+# AA RSS to Discord
 from aa_rss_to_discord.models import RssFeeds
 
 logger = logging.getLogger(__name__)

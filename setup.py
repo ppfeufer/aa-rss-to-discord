@@ -2,10 +2,13 @@
 setting up our app
 """
 
+# Standard Library
 import os
 
+# Third Party
 from setuptools import find_packages, setup
 
+# AA RSS to Discord
 from aa_rss_to_discord import __version__
 
 # read the contents of your README file
