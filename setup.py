@@ -30,7 +30,7 @@ project_issues_url = f"{project_git_url}/issues"
 project_changelog_url = f"{project_git_url}/blob/master/CHANGELOG.md"
 project_homepage_url = project_git_url
 project_install_requirements = [
-    "allianceauth>=2.9.3",
+    "allianceauth>=2.9.4",
     "allianceauth-discordbot",
     "feedparser",
     "discord.py",
