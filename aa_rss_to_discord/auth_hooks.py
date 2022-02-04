@@ -2,6 +2,7 @@
 Hooking into the auth system
 """
 
+# Alliance Auth
 from allianceauth import hooks
 
 

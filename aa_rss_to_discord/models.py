@@ -2,11 +2,14 @@
 Our Models
 """
 
+# Third Party
 from aadiscordbot.models import Channels
 
+# Django
 from django.db import models
 from django.utils.translation import gettext as _
 
+# AA RSS to Discord
 from aa_rss_to_discord.managers import RssFeedsManager
 
 

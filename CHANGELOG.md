@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
 
+## [In Development] - Unreleased
+
+
+## [1.3.1] - 2022-02-04
+
+### Added
+
+- Tests for Python 3.11
+
+### Changed
+
+- Requirements:
+  - Alliance Auth >= 2.9.4
+  - Allianceauth Discordbot < 3.0.0 (Until this bug is fixed » https://github.com/pvyParts/allianceauth-discordbot/issues/56)
+
+
 ## [1.3.0] - 2021-11-30
 
 ### Changed

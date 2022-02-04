@@ -2,8 +2,10 @@
 app config
 """
 
+# Django
 from django.apps import AppConfig
 
+# AA RSS to Discord
 from aa_rss_to_discord import __version__
 
 

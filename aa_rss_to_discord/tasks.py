@@ -2,17 +2,22 @@
 AA RSS To Discord Tasks
 """
 
+# Standard Library
 import logging
 import re
 
+# Third Party
 import feedparser
 from celery import shared_task
 
+# Django
 from django.apps import apps
 
+# Alliance Auth
 from allianceauth.services.hooks import get_extension_logger
 from allianceauth.services.tasks import QueueOnce
 
+# AA RSS to Discord
 from aa_rss_to_discord import __title__
 from aa_rss_to_discord.models import LastItem, RssFeeds
 from aa_rss_to_discord.utils import LoggerAddTag
@@ -66,6 +71,7 @@ def fetch_rss() -> None:
     """
 
     if apps.is_installed("aadiscordbot"):
+        # Third Party
         import aadiscordbot.tasks
 
         rss_feeds = RssFeeds.objects.select_enabled()
