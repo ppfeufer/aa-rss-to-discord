@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 - Switched to `setup.cfg` as config file, since `setup.py` is deprecated now
 
+### Removed
+
+- Deprecated settings
+
 
 ## [1.3.1] - 2022-02-04
 
