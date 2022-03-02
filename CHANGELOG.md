@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 ## [In Development] - Unreleased
 
+## Changed
+
+- Switched to `setup.cfg` as config file, since `setup.py` is deprecated now
+
 
 ## [1.3.1] - 2022-02-04
 
