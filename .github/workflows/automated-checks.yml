@@ -74,7 +74,7 @@ jobs:
       # Set Python and Django version to test for the stable release of AllianceAuth
       matrix:
         # Don't forget to change the Python version for [upload-coverage] as well
-        python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11-dev' ]
+        python-version: [ '3.8', '3.9', '3.10', '3.11-dev' ]
         # Don't forget to change the Django version for [upload-coverage] as well
         django-version: [ '3.2' ]
 
