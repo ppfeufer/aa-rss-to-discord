@@ -2,5 +2,5 @@
 a couple of variable to use throughout the app
 """
 
-__version__ = "1.3.1"
+__version__ = "1.4.0"
 __title__ = "RSS to Discord"
