@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 ## Changed
 
 - Switched to `setup.cfg` as config file, since `setup.py` is deprecated now
+- Requirements:
+  - Alliance Auth >= 2.11.0
+  - Allianceauth Discordbot >= 3.0.4
 
 ### Removed
 
