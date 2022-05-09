@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 ## [In Development] - Unreleased
 
 
+## [1.4.0] - 2022-05-09
+
+### Added
+
+- Test suite for AA 3.x and Django 4
+
+## Changed
+
+- Switched to `setup.cfg` as config file, since `setup.py` is deprecated now
+- Requirements:
+  - Alliance Auth >= 2.11.0
+  - Allianceauth Discordbot >= 3.0.5
+
+### Removed
+
+- Deprecated settings
+- Support for Python 3.7, since `allianceauth-discordbot` needs at least Python 3.8
+
+
 ## [1.3.1] - 2022-02-04
 
 ### Added
