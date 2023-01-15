@@ -17,10 +17,12 @@ from django.apps import apps
 from allianceauth.services.hooks import get_extension_logger
 from allianceauth.services.tasks import QueueOnce
 
+# Alliance Auth (External Libs)
+from app_utils.logging import LoggerAddTag
+
 # AA RSS to Discord
 from aa_rss_to_discord import __title__
 from aa_rss_to_discord.models import LastItem, RssFeeds
-from aa_rss_to_discord.utils import LoggerAddTag
 
 logger = LoggerAddTag(get_extension_logger(__name__), __title__)
 
@@ -174,9 +176,9 @@ def fetch_rss() -> None:
                     )
                 else:
                     logger.debug(
-                        "No RSS Feed to post. "
+                        f'No item for feed "{rss_feed.name}" to post. '
                         'Missing either "post_entry" to be "True" or '
-                        'either "feed_entry_link" or "feed_entry_guid" is"None".'
+                        'either "feed_entry_link" or "feed_entry_guid" is "None".'
                     )
         else:
             logger.debug("No RSS feeds found to parse.")
