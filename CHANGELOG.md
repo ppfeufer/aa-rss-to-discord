@@ -8,10 +8,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 ## [In Development] - Unreleased
 
+
+## [1.4.1] - 2023-01-15
+
+### Added
+
+- More Debug logging for the task ti figure out what's going on for issue #23
+
 ### Changed
 
 - Requirements:
   - Alliance Auth >= 3.0.0
+- Switched to Allianceauth App Utils for better logging
 
 
 ## [1.4.0] - 2022-05-09
