@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 ### Added
 
-- More Debug logging for the task ti figure out what's going on for issue #23
+- More Debug logging for the task to figure out what's going on for issue #23
 
 ### Changed
 
