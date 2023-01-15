@@ -132,7 +132,7 @@ def fetch_rss() -> None:
                     post_entry = False
 
                 logger.debug(
-                    f"RSS Information gathered: "
+                    "RSS Information gathered: "
                     f"post_entry => {post_entry}, "
                     f'feed_entry_link => "{feed_entry_link}", '
                     f'feed_entry_title => "{feed_entry_title}", '
