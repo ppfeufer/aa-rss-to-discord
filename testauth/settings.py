@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     "allianceauth.thirdparty.navhelper",
 ]
 
+PACKAGE = "aa_rss_to_discord"
+
 SECRET_KEY = "wow I'm a really bad default secret key"
 
 # Celery configuration
@@ -141,7 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, "static"),
+    os.path.join(PROJECT_DIR, f"{PACKAGE}/static"),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
@@ -150,11 +152,8 @@ MESSAGE_TAGS = {messages.ERROR: "danger"}
 
 CACHES = {
     "default": {
-        "BACKEND": "redis_cache.RedisCache",
-        "LOCATION": "localhost:6379",
-        "OPTIONS": {
-            "DB": 1,
-        },
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
     }
 }
 
@@ -168,6 +167,10 @@ DATABASES = {
 }
 
 SITE_NAME = "Alliance Auth"
+SITE_URL = "https://example.com"
+CSRF_TRUSTED_ORIGINS = [SITE_URL]
+
+DISCORD_BOT_TOKEN = "My_Dummy_Token"
 
 LOGIN_URL = "auth_login_user"  # view that handles login logic
 
@@ -257,6 +260,21 @@ SITE_NAME = "testauth"
 # useful error messages but can leak sensitive data.
 DEBUG = False
 
+if os.environ.get("USE_MYSQL", True) is True:
+    DATABASES["default"] = {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "tox_allianceauth",
+        "USER": os.environ.get("DB_USER", "user"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
+        "HOST": os.environ.get("DB_HOST", ""),
+        "PORT": os.environ.get("DB_PORT", ""),
+        "OPTIONS": {"charset": "utf8mb4"},
+        "TEST": {
+            "CHARSET": "utf8mb4",
+            "NAME": "test_tox_allianceauth",
+        },
+    }
+
 # Add any additional apps to this list.
 INSTALLED_APPS += ["aadiscordbot", "aa_rss_to_discord"]
 
@@ -291,3 +309,5 @@ LOGGING = False
 
 NOTIFICATIONS_REFRESH_TIME = 30
 NOTIFICATIONS_MAX_PER_USER = 50
+
+DISCORD_BOT_TOKEN = "MYDUMMYTOKEN"

@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: Suggest an idea for AA RSS to Discord
+about: Suggest an idea
 title: "[Feature Request] "
 labels: ''
 assignees: ''

@@ -17,10 +17,12 @@ from django.apps import apps
 from allianceauth.services.hooks import get_extension_logger
 from allianceauth.services.tasks import QueueOnce
 
+# Alliance Auth (External Libs)
+from app_utils.logging import LoggerAddTag
+
 # AA RSS to Discord
 from aa_rss_to_discord import __title__
 from aa_rss_to_discord.models import LastItem, RssFeeds
-from aa_rss_to_discord.utils import LoggerAddTag
 
 logger = LoggerAddTag(get_extension_logger(__name__), __title__)
 
@@ -120,10 +122,23 @@ def fetch_rss() -> None:
                             )
                             post_entry = False
                     except LastItem.DoesNotExist:
+                        logger.debug("This seems to be a completely new RSS feed.")
+
                         has_last_item = False
 
-                except IndexError:
+                except IndexError as ex:
+                    logger.debug(f"Could not index the RSS feed. Error: {ex}")
+
                     post_entry = False
+
+                logger.debug(
+                    "RSS Information gathered: "
+                    f"post_entry => {post_entry}, "
+                    f'feed_entry_link => "{feed_entry_link}", '
+                    f'feed_entry_title => "{feed_entry_title}", '
+                    f"feed_entry_time => {feed_entry_time}, "
+                    f"feed_entry_guid => {feed_entry_guid}"
+                )
 
                 if (
                     post_entry is True
@@ -159,6 +174,14 @@ def fetch_rss() -> None:
                         discord_message,
                         embed=False,
                     )
+                else:
+                    logger.debug(
+                        f'No item for feed "{rss_feed.name}" to post. '
+                        'Missing either "post_entry" to be "True" or '
+                        'either "feed_entry_link" or "feed_entry_guid" is "None".'
+                    )
+        else:
+            logger.debug("No RSS feeds found to parse.")
     else:
         logging.info(
             "AA Discordbot (https://github.com/pvyParts/allianceauth-discordbot) "
