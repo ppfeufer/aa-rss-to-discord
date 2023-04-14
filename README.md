@@ -15,18 +15,21 @@
 
 A simple app to post selected RSS feeds to your Discord.
 
+---
 
-## Contents
+<!-- TOC -->
+* [Alliance Auth RSS to Discord](#alliance-auth-rss-to-discord)
+  * [Installation](#installation)
+    * [Step 0.5: Install AA-Discordbot](#step-05-install-aa-discordbot)
+    * [Step 1: Install the Package](#step-1-install-the-package)
+    * [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
+    * [Step 3: Finalizing the Installation](#step-3-finalizing-the-installation)
+    * [Step 4: Configure your RSS Feeds](#step-4-configure-your-rss-feeds)
+  * [Discord Bot Commands](#discord-bot-commands)
+  * [Updating](#updating)
+<!-- TOC -->
 
-- [Installation](#installation)
-  - [Step 0.5 - Install AA-Discordbot](#step-05---install-aa-discordbot)
-  - [Step 1 - Install the Package](#step-1---install-the-package)
-  - [Step 2 - Configure Alliance Auth](#step-2---configure-alliance-auth)
-  - [Step 3 - Finalize the Installation](#step-3---finalize-the-installation)
-  - [Step 4 - Configure your RSS Feeds](#step-4---configure-your-rss-feeds)
-- [Discord Bot Commands](#discord-bot-commands)
-- [Updating](#updating)
-
+---
 
 ## Installation
 
@@ -40,24 +43,24 @@ A simple app to post selected RSS feeds to your Discord.
   **before** installing this app.
 
 
-### Step 0.5 - Install AA-Discordbot
+### Step 0.5: Install AA-Discordbot
 
 In order for this app to work, you need to install and configure
 [AA-Discordbot](https://github.com/pvyParts/allianceauth-discordbot) first. Read the
 instructions how to do so in the README of AA-Discordbot.
 
 
-### Step 1 - Install the Package
+### Step 1: Install the Package
 
-Make sure you are in the virtual environment (venv) of your Alliance Auth
-installation Then install the latest releast directly from PyPi.
+Make sure you're in the virtual environment (venv) of your Alliance Auth
+installation Then install the latest release directly from PyPi.
 
 ```shell
 pip install aa-rss-to-discord
 ```
 
 
-### Step 2 - Configure Alliance Auth
+### Step 2: Configure Alliance Auth
 
 This is fairly simple, just add the following to the `INSTALLED_APPS` of your `local.py`
 
@@ -73,7 +76,7 @@ Configure your AA settings (`local.py`) as follows:
   ```
 
 
-### Step 3 - Finalize the Installation
+### Step 3: Finalizing the Installation
 
 Run migrations to finalize the installation
 
@@ -81,12 +84,12 @@ Run migrations to finalize the installation
 python manage.py migrate
 ```
 
-Finally restart your supervisor services for AA.
+Finally, restart your supervisor services for AA.
 
 
-### Step 4 - Configure your RSS Feeds
+### Step 4: Configure your RSS Feeds
 
-First you need to set up the Discord Server and Channels. For this you go in your
+First, you need to set up the Discord Server and Channels. For this, you go in your
 admin backend to the Discordbot settings and enter the needed information there.
 
 When done, you can set up your RSS feeds. This can be done in the setting of this
@@ -98,13 +101,14 @@ and select the Discord channel it should be posted to. Once done, save it.
 
 The following commands are available for the Discord bot to manage RSS/Atom feeds:
 
-| Command | Options | What it does |
-|:---|:---|:---|
-| `!rss_add <rss_url> <rss_name>` | - `rss_url` - The URL of the RSS/Atom feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom fedd to the current channel |
-| `!rss_delete <rss_feed_id>` | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove |  Remove a RSS/Atom feed from the current Discord channel |
-| `!rss_disable <rss_feed_id>` | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable |  Disable an enabled RSS/Atom feed for the current Discord channel |
-| `!rss_enable <rss_feed_id>` | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable |  Enable a disabled RSS/Atom feed for the current Discord channel |
-| `!rss_list` | None |  List all RSS/Atom feeds for the current Discord channel |
+| Command                         | Options                                                                                   | What it does                                                     |
+|:--------------------------------|:------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|
+| `!rss_add <rss_url> <rss_name>` | - `rss_url` - The URL of the RSS/Atom feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom feed to the current channel                    |
+| `!rss_delete <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove                            | Remove a RSS/Atom feed from the current Discord channel          |
+| `!rss_disable <rss_feed_id>`    | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable                           | Disable an enabled RSS/Atom feed for the current Discord channel |
+| `!rss_enable <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable                            | Enable a disabled RSS/Atom feed for the current Discord channel  |
+| `!rss_list`                     | None                                                                                      | List all RSS/Atom feeds for the current Discord channel          |
+
 
 ## Updating
 
@@ -117,4 +121,4 @@ pip install -U aa-rss-to-discord
 python manage.py migrate
 ```
 
-Finally restart your supervisor services for AA.
+Finally, restart your supervisor services for AA.
