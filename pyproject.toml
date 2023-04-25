@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aa-rss-to-discord"
-version = "1.5.0"
+version = "1.6.0"
 description = "Alliance Auth module to post news from RSS feeds to your Discord"
 readme = "README.md"
 license = "GPL-3.0"

@@ -1,3 +1,4 @@
+# Contributing
 
 ---
 
@@ -11,8 +12,6 @@
 
 ---
 
-
-# Contributing
 
 ## Code Formatting
 
