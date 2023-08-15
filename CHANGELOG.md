@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 ### Added
 
 - Spanish translation
+- Ukrainian translation
 
 
 ## [1.6.0] - 2023-04-25
