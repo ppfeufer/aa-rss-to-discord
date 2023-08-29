@@ -28,6 +28,9 @@ ______________________________________________________________________
     - [Step 4: Configure your RSS Feeds](#step-4-configure-your-rss-feeds)
   - [Discord Bot Commands](#discord-bot-commands)
   - [Updating](#updating)
+  - [Changelog](#changelog)
+  - [Translations](#translations)
+  - [Contributing](#contributing)
 
 <!-- mdformat-toc end -->
 
@@ -117,3 +120,33 @@ python manage.py migrate
 ```
 
 Finally, restart your supervisor services for AA.
+
+## Changelog<a name="changelog"></a>
+
+See [CHANGELOG.md]
+
+## Translations<a name="translations"></a>
+
+This app is currently translated into:
+
+- German
+- Korean
+- Russian
+- Spanish
+- Ukrainian
+
+If you want to help to translate this app or improve existing translations, join
+our team of translators over on [Weblate][weblate engage]!
+
+## Contributing<a name="contributing"></a>
+
+Do you want to contribute to this project? That's cool!
+
+Please make sure to read the [Contribution Guidelines]
+(I promise, it's not much, just some basics)
+
+<!-- Links -->
+
+[changelog.md]: https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CHANGELOG.md "Changelog"
+[contribution guidelines]: https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CONTRIBUTING.md "Contribution Guidelines"
+[weblate engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/ "Weblate Translations"
