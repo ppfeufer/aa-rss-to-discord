@@ -9,6 +9,7 @@
 [![Discord](https://img.shields.io/discord/790364535294132234?label=discord)](https://discord.gg/zmh52wnfvM)
 [![Checks](https://github.com/ppfeufer/aa-rss-to-discord/actions/workflows/automated-checks.yml/badge.svg)](https://github.com/ppfeufer/aa-rss-to-discord/actions/workflows/automated-checks.yml)
 [![codecov](https://codecov.io/gh/ppfeufer/aa-rss-to-discord/branch/master/graph/badge.svg?token=LVEQ6W55ZB)](https://codecov.io/gh/ppfeufer/aa-rss-to-discord)
+[![Badge: Translation Status]][weblate engage]
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CODE_OF_CONDUCT.md)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N8CL1BY)
@@ -147,6 +148,7 @@ Please make sure to read the [Contribution Guidelines]
 
 <!-- Links -->
 
+[badge: translation status]: https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-rss-to-discord/svg-badge.svg "Translation Status"
 [changelog.md]: https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CHANGELOG.md "Changelog"
 [contribution guidelines]: https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CONTRIBUTING.md "Contribution Guidelines"
 [weblate engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/ "Weblate Translations"
