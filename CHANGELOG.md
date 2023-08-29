@@ -5,40 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
+## \[In Development\] - Unreleased
 
-## [In Development] - Unreleased
-
-
-## [1.7.0] - 2023-08-15
+## \[1.7.0\] - 2023-08-15
 
 ### Added
 
 - Spanish translation
 - Ukrainian translation
 
-
-## [1.6.0] - 2023-04-25
+## \[1.6.0\] - 2023-04-25
 
 ### Changed
 
 - Moved the build process to PEP 621 / pyproject.toml
 
-
-## [1.5.0] - 2023-04-16
+## \[1.5.0\] - 2023-04-16
 
 ### Added
 
 - Russian translation
 
-
-## [1.4.2] - 2023-04-13
+## \[1.4.2\] - 2023-04-13
 
 ### Added
 
 - German translation
 
-
-## [1.4.1] - 2023-01-15
+## \[1.4.1\] - 2023-01-15
 
 ### Added
 
@@ -50,8 +44,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
   - Alliance Auth >= 3.0.0
 - Switched to Allianceauth App Utils for better logging
 
-
-## [1.4.0] - 2022-05-09
+## \[1.4.0\] - 2022-05-09
 
 ### Added
 
@@ -69,8 +62,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 - Deprecated settings
 - Support for Python 3.7, since `allianceauth-discordbot` needs at least Python 3.8
 
-
-## [1.3.1] - 2022-02-04
+## \[1.3.1\] - 2022-02-04
 
 ### Added
 
@@ -80,10 +72,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 - Requirements:
   - Alliance Auth >= 2.9.4
-  - Allianceauth Discordbot < 3.0.0 (Until this bug is fixed » https://github.com/pvyParts/allianceauth-discordbot/issues/56)
+  - Allianceauth Discordbot \< 3.0.0 (Until this bug is fixed » https://github.com/pvyParts/allianceauth-discordbot/issues/56)
 
-
-## [1.3.0] - 2021-11-30
+## \[1.3.0\] - 2021-11-30
 
 ### Changed
 
@@ -91,15 +82,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
   - Python 3.7
   - Alliance Auth v2.9.3
 
-
-## [1.2.1] - 2021-11-17
+## \[1.2.1\] - 2021-11-17
 
 ### Fixed
 
 - Min python version is 3.7
 
-
-## [1.2.0] - 2021-11-16
+## \[1.2.0\] - 2021-11-16
 
 ### Added
 
@@ -109,59 +98,52 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 - Minimum requirements
 
-
-## [1.1.2] - 2021-10-19
+## \[1.1.2\] - 2021-10-19
 
 ### Changed
 
 - Task improved so it doesn't throw a confusing log message
 
-
-## [1.1.1] - 2021-09-03
+## \[1.1.1\] - 2021-09-03
 
 ### Changed
 
 - Added some sanity checks to the task
 
-
-## [1.1.0] - 2021-09-03
+## \[1.1.0\] - 2021-09-03
 
 ### Added
 
 - Commands for the Discord bot to manage RSS/Atom feeds. The following commands have
   been added:
 
-  | Command                           | Options                                                                                                                      | What it does                                                     |
-  |:----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------|
-  | `!rss_add <rss_url> <rss_name>`   | - `rss_url` - The URL of the RSS/Atom <br/><br/><br/><br/><br/><br/><br/>feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom feed to the current channel                    |
-  | `!rss_delete <rss_feed_id>`       | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove                                                               | Remove a RSS/Atom feed from the current Discord channel          |
-  | `!rss_disable <rss_feed_id>`      | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable                                                              | Disable an enabled RSS/Atom feed for the current Discord channel |
-  | `!rss_enable <rss_feed_id>`       | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable                                                               | Enable a disabled RSS/Atom feed for the current Discord channel  |
-  | `!rss_list`                       | None                                                                                                                         | List all RSS/Atom feeds for the <br/>current Discord channel     |
+  | Command                         | Options                                                                                                                      | What it does                                                     |
+  | :------------------------------ | :--------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------- |
+  | `!rss_add <rss_url> <rss_name>` | - `rss_url` - The URL of the RSS/Atom <br/><br/><br/><br/><br/><br/><br/>feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom feed to the current channel                    |
+  | `!rss_delete <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove                                                               | Remove a RSS/Atom feed from the current Discord channel          |
+  | `!rss_disable <rss_feed_id>`    | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable                                                              | Disable an enabled RSS/Atom feed for the current Discord channel |
+  | `!rss_enable <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable                                                               | Enable a disabled RSS/Atom feed for the current Discord channel  |
+  | `!rss_list`                     | None                                                                                                                         | List all RSS/Atom feeds for the <br/>current Discord channel     |
 
-
-## [1.0.0] - 2021-09-03
+## \[1.0.0\] - 2021-09-03
 
 ### Changed
 
 - Moved from Beta to Stable
 
-
-## [0.1.0-beta.7] - 2021-07-08
+## \[0.1.0-beta.7\] - 2021-07-08
 
 ### Added
 
 - Tested for compatibility with Python 3.9 and Django 3.2
 
-
-## [0.1.0-beta.6] - 2021-05-27
+## \[0.1.0-beta.6\] - 2021-05-27
 
 ### Changed
 
 - Update the last item instead of removing and adding it again
 
-
-## [0.1.0-beta.5] - 2021-05-25
+## \[0.1.0-beta.5\] - 2021-05-25
 
 ### Added
 
@@ -171,22 +153,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 - Cleaned up the filter in admin interface
 
-
-## [0.1.0-beta.4] - 2021-05-05
+## \[0.1.0-beta.4\] - 2021-05-05
 
 ### Fixed
 
 - Using Django application registry instead of directly accessing `INSTALLED_APPS`
 
-
-## [0.1.0-beta.3] - 2021-04-30
+## \[0.1.0-beta.3\] - 2021-04-30
 
 ### Fixed
 
 - SQL error when there are emojis in the RSS title
 
-
-## [0.1.0-beta.2] - 2021-04-30
+## \[0.1.0-beta.2\] - 2021-04-30
 
 ### Changed
 
@@ -202,7 +181,6 @@ python myauth/manage.py migrate aa_rss_to_discord zero
 
 Run migrations after updating as usual.
 
-
-## [0.1.0-beta.1] - 2021-04-29
+## \[0.1.0-beta.1\] - 2021-04-29
 
 - First public beta release

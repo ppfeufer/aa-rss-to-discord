@@ -65,16 +65,16 @@ def remove_emoji(string):
 
 
 @shared_task(**{"base": QueueOnce})
-def fetch_rss() -> None:
+def fetch_rss() -> None:  # pylint: disable=too-many-statements
     """
     Fetch RSS feeds and post to Discord
     :return:
     :rtype:
     """
 
-    if apps.is_installed("aadiscordbot"):
+    if apps.is_installed("aadiscordbot"):  # pylint: disable=too-many-nested-blocks
         # Third Party
-        import aadiscordbot.tasks
+        import aadiscordbot.tasks  # pylint: disable=import-outside-toplevel
 
         rss_feeds = RssFeeds.objects.select_enabled()
 
