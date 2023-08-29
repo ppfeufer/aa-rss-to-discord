@@ -146,9 +146,24 @@ class Rss(commands.Cog):
 
     @rss_delete.error
     async def rss_delete_error(self, ctx, error):
+        """
+        Delete error
+
+        :param ctx:
+        :type ctx:
+        :param error:
+        :type error:
+        :return:
+        :rtype:
+        """
+
         if isinstance(
-            error, discord.ext.commands.errors.MissingRequiredArgument
-        ) or isinstance(error, discord.ext.commands.CommandInvokeError):
+            error,
+            (
+                discord.ext.commands.CommandInvokeError,
+                discord.ext.commands.errors.MissingRequiredArgument,
+            ),
+        ):
             await ctx.send(
                 "You didn't provide a numeric value for the RSS/Atom ID you want to "
                 "remove.\n\nExample:\n```!rss_delete 5```To remove RSS/Atom feed "
@@ -185,9 +200,24 @@ class Rss(commands.Cog):
 
     @rss_enable.error
     async def rss_enable_error(self, ctx, error):
+        """
+        Enable error
+
+        :param ctx:
+        :type ctx:
+        :param error:
+        :type error:
+        :return:
+        :rtype:
+        """
+
         if isinstance(
-            error, discord.ext.commands.errors.MissingRequiredArgument
-        ) or isinstance(error, discord.ext.commands.CommandInvokeError):
+            error,
+            (
+                discord.ext.commands.CommandInvokeError,
+                discord.ext.commands.errors.MissingRequiredArgument,
+            ),
+        ):
             await ctx.send(
                 "You didn't provide a numeric value for the RSS/Atom ID you want to "
                 "enable.\n\nExample:\n```!rss_enable 5```To enable RSS/Atom feed wth "
@@ -224,9 +254,24 @@ class Rss(commands.Cog):
 
     @rss_disable.error
     async def rss_disable_error(self, ctx, error):
+        """
+        Disable error
+
+        :param ctx:
+        :type ctx:
+        :param error:
+        :type error:
+        :return:
+        :rtype:
+        """
+
         if isinstance(
-            error, discord.ext.commands.errors.MissingRequiredArgument
-        ) or isinstance(error, discord.ext.commands.CommandInvokeError):
+            error,
+            (
+                discord.ext.commands.CommandInvokeError,
+                discord.ext.commands.errors.MissingRequiredArgument,
+            ),
+        ):
             await ctx.send(
                 "You didn't provide a numeric value for the RSS/Atom ID you want to "
                 "enable.\n\nExample:\n```!rss_disable 5```To disable RSS/Atom feed "
@@ -237,7 +282,7 @@ class Rss(commands.Cog):
 
 def setup(bot):
     """
-    setup the cog
+    Setup the cog
     :param bot:
     """
 

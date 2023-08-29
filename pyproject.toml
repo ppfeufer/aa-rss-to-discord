@@ -1,23 +1,25 @@
 [build-system]
-requires = ["hatchling"]
 build-backend = "hatchling.build"
+requires = [
+    "hatchling",
+]
 
 [project]
 name = "aa-rss-to-discord"
-version = "1.7.0"
+version = "1.8.0"
 description = "Alliance Auth module to post news from RSS feeds to your Discord"
 readme = "README.md"
-license = "GPL-3.0"
-requires-python = "~=3.8"
-authors = [
-    { name = "Peter Pfeufer", email = "develop@ppfeufer.de" },
-]
 keywords = [
     "allianceauth",
     "discord",
     "eveonline",
     "rss",
 ]
+license = {file = "LICENSE"}
+authors = [
+    { name = "Peter Pfeufer", email = "develop@ppfeufer.de" },
+]
+requires-python = "~=3.8"
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
@@ -35,17 +37,17 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 dependencies = [
+    "allianceauth>=3",
     "allianceauth-app-utils>=1.14.2",
     "allianceauth-discordbot>=3.0.5",
-    "allianceauth>=3.0.0",
     "feedparser",
 ]
-
 [project.urls]
-Homepage = "https://github.com/ppfeufer/aa-rss-to-discord"
-Documentation = "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/README.md"
-Source = "https://github.com/ppfeufer/aa-rss-to-discord.git"
 Changelog = "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CHANGELOG.md"
+Documentation = "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/README.md"
+Donations = "https://ko-fi.com/ppfeufer"
+Homepage = "https://github.com/ppfeufer/aa-rss-to-discord"
+Source = "https://github.com/ppfeufer/aa-rss-to-discord.git"
 Tracker = "https://github.com/ppfeufer/aa-rss-to-discord/issues"
 
 [tool.hatch.build]
