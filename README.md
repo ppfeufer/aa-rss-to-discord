@@ -9,6 +9,7 @@
 [![Discord](https://img.shields.io/discord/790364535294132234?label=discord)](https://discord.gg/zmh52wnfvM)
 [![Checks](https://github.com/ppfeufer/aa-rss-to-discord/actions/workflows/automated-checks.yml/badge.svg)](https://github.com/ppfeufer/aa-rss-to-discord/actions/workflows/automated-checks.yml)
 [![codecov](https://codecov.io/gh/ppfeufer/aa-rss-to-discord/branch/master/graph/badge.svg?token=LVEQ6W55ZB)](https://codecov.io/gh/ppfeufer/aa-rss-to-discord)
+[![Badge: Translation Status]][weblate engage]
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CODE_OF_CONDUCT.md)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N8CL1BY)
@@ -29,7 +30,7 @@ ______________________________________________________________________
   - [Discord Bot Commands](#discord-bot-commands)
   - [Updating](#updating)
   - [Changelog](#changelog)
-  - [Translations](#translations)
+  - [Translation Status](#translation-status)
   - [Contributing](#contributing)
 
 <!-- mdformat-toc end -->
@@ -125,28 +126,23 @@ Finally, restart your supervisor services for AA.
 
 See [CHANGELOG.md]
 
-## Translations<a name="translations"></a>
+## Translation Status<a name="translation-status"></a>
 
-This app is currently translated into:
+[![Translation status](https://weblate.ppfeufer.de/widget/alliance-auth-apps/aa-rss-to-discord/multi-auto.svg)](https://weblate.ppfeufer.de/engage/alliance-auth-apps/)
 
-- German
-- Korean
-- Russian
-- Spanish
-- Ukrainian
-
-If you want to help to translate this app or improve existing translations, join
-our team of translators over on [Weblate][weblate engage]!
+Do you want to help translate this app into your language or improve the existing
+translation? - [Join our team of translators][weblate engage]!
 
 ## Contributing<a name="contributing"></a>
 
 Do you want to contribute to this project? That's cool!
 
-Please make sure to read the [Contribution Guidelines]
+Please make sure to read the [Contribution Guidelines].\
 (I promise, it's not much, just some basics)
 
 <!-- Links -->
 
+[badge: translation status]: https://weblate.ppfeufer.de/widget/alliance-auth-apps/aa-rss-to-discord/svg-badge.svg "Translation Status"
 [changelog.md]: https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CHANGELOG.md "Changelog"
 [contribution guidelines]: https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CONTRIBUTING.md "Contribution Guidelines"
 [weblate engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/ "Weblate Translations"
