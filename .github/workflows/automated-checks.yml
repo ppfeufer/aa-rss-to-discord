@@ -206,7 +206,7 @@ jobs:
         working-directory: artifacts
 
       - name: Upload Coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           files: artifacts/coverage-${{ github.event_name }}-${{ github.sha }}/coverage.xml # optional
