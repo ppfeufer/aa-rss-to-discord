@@ -14,8 +14,8 @@ ______________________________________________________________________
       - [Minified CSS](#minified-css)
     - [pre-commit](#pre-commit)
   - [Branching and Contributing via Pull Requests](#branching-and-contributing-via-pull-requests)
-  - [Tests](#tests)
-  - [Checklist](#checklist)
+    - [Tests](#tests)
+    - [Checklist](#checklist)
   - [Translation](#translation)
 
 <!-- mdformat-toc end -->
@@ -48,7 +48,7 @@ pre-commit run black
 
 ### JavaScript<a name="javascript"></a>
 
-The JavaScript code follows [ECMAScript 6 (or ES6 for short)][ecmascript 6] or later
+The JavaScript code follows [ECMAScript 6 (or ES6 for short)][ecmascript 6] or newer
 rules. The use of arrow functions is preferred and `this` or `$(this)` should be
 prevented. Functions need to be declared before their use and the JavaScript code
 should follow `'use strict';`.
@@ -56,6 +56,7 @@ should follow `'use strict';`.
 Indent size: 4 spaces
 
 A linter configuration is declared as `.eslintrc.json` in the app's root directory.
+Do not change this file.
 
 To check that your JavaScript code adheres to the rules, run:
 
@@ -76,10 +77,11 @@ uglifyjs script.js -o script.min.js --source-map "url='script.min.js.map'" --com
 
 ### CSS<a name="css"></a>
 
-The CSS should be written in a modern manner. Colour definitions should be in RGB(A)
-(`rgb(255 255 255)`, `rgba(255 255 255 / 50%)`) for example.
+The CSS should be written in a modern manner. Colour definitions should be in
+modern RGB(A) (`rgb(255 255 255)`, `rgba(255 255 255 / 50%)`) for example.
 
-A linter configuration is declared as `.stylelintrc.json` in the app's root directory.
+A linter configuration is declared as `.stylelintrc.json` in the app's root
+directory. Do not change this file.
 
 Indent size: 4 spaces
 
@@ -139,10 +141,11 @@ The following will be checked by `pre-commit` (among others):
 ## Branching and Contributing via Pull Requests<a name="branching-and-contributing-via-pull-requests"></a>
 
 To contribute code via pull request, make sure that you fork the repository and
-branch your changes from the `development` branch. We strongly recommend to create a
-new branch for every new feature or change you plan to be submitting as merge request.
+branch your changes from the `master` branch.
 
-Only pull requests towards the `development` branch will be considered.
+We strongly recommend to create a new branch for every new feature or change you
+plan to be submitting as merge request. Please make sure to keep the `master` branch of
+your fork in sync with the main repository to avoid conflicts.
 
 Before you start working on a new feature, please open an Issue (Type: Feature
 Request) and start a discussion if your idea is generally wanted and considered a
@@ -153,7 +156,7 @@ finished developing to flag that you are working on a specific topic. Merge requ
 that are not yet ready to review should be marked as DRAFT. You can signal others
 that your merge request is ready for review by removing the DRAFT flag again.
 
-## Tests<a name="tests"></a>
+### Tests<a name="tests"></a>
 
 Please update existing or provide additional unit tests for your changes. Note that
 your merge request might fail if it reduces the current level of test coverage.
@@ -166,7 +169,7 @@ addition we are using some following 3rd party test tools:
 - [tox] - Running the test suite
 - [coverage] - Measuring the test coverage
 
-## Checklist<a name="checklist"></a>
+### Checklist<a name="checklist"></a>
 
 Before you submit a pull request, please make sure that:
 

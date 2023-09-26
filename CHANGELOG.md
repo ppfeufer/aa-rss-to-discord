@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 ## \[In Development\] - Unreleased
 
+## \[1.8.1\] - 2023-09-26
+
+### Changed
+
+- Translations updated
+- Test suite updated
+
 ## \[1.8.0\] - 2023-08-29
 
 ### Added
@@ -123,13 +130,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 - Commands for the Discord bot to manage RSS/Atom feeds. The following commands have
   been added:
 
-  | Command                         | Options                                                                                                                      | What it does                                                     |
-  | :------------------------------ | :--------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------- |
-  | `!rss_add <rss_url> <rss_name>` | - `rss_url` - The URL of the RSS/Atom <br/><br/><br/><br/><br/><br/><br/>feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom feed to the current channel                    |
-  | `!rss_delete <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove                                                               | Remove a RSS/Atom feed from the current Discord channel          |
-  | `!rss_disable <rss_feed_id>`    | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable                                                              | Disable an enabled RSS/Atom feed for the current Discord channel |
-  | `!rss_enable <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable                                                               | Enable a disabled RSS/Atom feed for the current Discord channel  |
-  | `!rss_list`                     | None                                                                                                                         | List all RSS/Atom feeds for the <br/>current Discord channel     |
+  | Command                         | Options                                                                               | What it does                                                     |
+  | :------------------------------ | :------------------------------------------------------------------------------------ | :--------------------------------------------------------------- |
+  | `!rss_add <rss_url> <rss_name>` | `rss_url` - The URL of the RSS/Atom feed<br>`rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom feed to the current channel                    |
+  | `!rss_delete <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove                        | Remove a RSS/Atom feed from the current Discord channel          |
+  | `!rss_disable <rss_feed_id>`    | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable                       | Disable an enabled RSS/Atom feed for the current Discord channel |
+  | `!rss_enable <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable                        | Enable a disabled RSS/Atom feed for the current Discord channel  |
+  | `!rss_list`                     | None                                                                                  | List all RSS/Atom feeds for the <br/>current Discord channel     |
 
 ## \[1.0.0\] - 2021-09-03
 
