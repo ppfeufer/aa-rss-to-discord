@@ -42,6 +42,11 @@ dependencies = [
     "allianceauth-discordbot>=3.0.5",
     "feedparser",
 ]
+[project.optional-dependencies]
+tests-allianceauth-stable = [
+    "coverage",
+    "django-webtest",
+]
 [project.urls]
 Changelog = "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CHANGELOG.md"
 Documentation = "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/README.md"
