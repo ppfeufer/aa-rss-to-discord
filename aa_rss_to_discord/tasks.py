@@ -31,6 +31,7 @@ def remove_emoji(string):
     """
     Removing these dumb as fuck emojis from the title string.
     Like honestly, who in the hell needs that shit?
+
     :param string:
     :type string:
     :return:
@@ -38,7 +39,7 @@ def remove_emoji(string):
     """
 
     emoji_pattern = re.compile(
-        "["
+        pattern="["
         "\U0001F600-\U0001F64F"  # Emoticons
         "\U0001F300-\U0001F5FF"  # Symbols & pictographs
         "\U0001F680-\U0001F6FF"  # Transport & map symbols
@@ -61,28 +62,32 @@ def remove_emoji(string):
         flags=re.UNICODE,
     )
 
-    return emoji_pattern.sub(r"", string)
+    return emoji_pattern.sub(repl=r"", string=string)
 
 
 @shared_task(**{"base": QueueOnce})
-def fetch_rss() -> None:  # pylint: disable=too-many-statements
+def fetch_rss() -> None:  # pylint: disable=too-many-statements, too-many-branches
     """
     Fetch RSS feeds and post to Discord
+
     :return:
     :rtype:
     """
 
-    if apps.is_installed("aadiscordbot"):  # pylint: disable=too-many-nested-blocks
+    # pylint: disable=too-many-nested-blocks
+    if apps.is_installed(app_name="aadiscordbot"):
         # Third Party
-        import aadiscordbot.tasks  # pylint: disable=import-outside-toplevel
+        from aadiscordbot.tasks import (  # pylint: disable=import-outside-toplevel
+            send_message,
+        )
 
         rss_feeds = RssFeeds.objects.select_enabled()
 
         if rss_feeds:
             for rss_feed in rss_feeds:
-                logger.info(f'Fetching RSS Feed "{rss_feed.name}"')
+                logger.info(msg=f'Fetching RSS Feed "{rss_feed.name}"')
 
-                feed = feedparser.parse(rss_feed.url)
+                feed = feedparser.parse(url_file_stream_or_string=rss_feed.url)
 
                 feed_entry_title = "No title"
                 feed_entry_link = None
@@ -90,19 +95,28 @@ def fetch_rss() -> None:  # pylint: disable=too-many-statements
                 feed_entry_guid = None
                 has_last_item = False
                 last_item = None
+                post_entry = False
 
                 try:
                     latest_entry = feed.entries[0]
 
                     feed_entry_title = remove_emoji(
-                        latest_entry.get("title", "No title")
+                        string=latest_entry.get("title", "No title")
                     )
                     feed_entry_link = latest_entry.get("link", None)
                     feed_entry_time = latest_entry.get(
                         "published", latest_entry.updated
                     )
                     feed_entry_guid = latest_entry.get("id", None)
-
+                except AttributeError as exc:
+                    logger.debug(
+                        msg=f'Malformed RSS feed item in feed "{rss_feed.name}". Error: {exc}'
+                    )
+                except IndexError as exc:
+                    logger.debug(
+                        msg=f'Could not index the RSS feed "{rss_feed.name}". Error: {exc}'
+                    )
+                else:
                     post_entry = True
                     has_last_item = True
 
@@ -117,27 +131,26 @@ def fetch_rss() -> None:  # pylint: disable=too-many-statements
                             and last_item.rss_item_guid == feed_entry_guid
                         ):
                             logger.debug(
-                                f'News item "{feed_entry_title}" for RSS Feed '
-                                f'"{rss_feed.name}" has already been posted to your Discord'
+                                msg=(
+                                    f'News item "{feed_entry_title}" for RSS Feed '
+                                    f'"{rss_feed.name}" has already been posted to your Discord'
+                                )
                             )
                             post_entry = False
                     except LastItem.DoesNotExist:
-                        logger.debug("This seems to be a completely new RSS feed.")
+                        logger.debug(msg="This seems to be a completely new RSS feed.")
 
                         has_last_item = False
 
-                except IndexError as ex:
-                    logger.debug(f"Could not index the RSS feed. Error: {ex}")
-
-                    post_entry = False
-
                 logger.debug(
-                    "RSS Information gathered: "
-                    f"post_entry => {post_entry}, "
-                    f'feed_entry_link => "{feed_entry_link}", '
-                    f'feed_entry_title => "{feed_entry_title}", '
-                    f"feed_entry_time => {feed_entry_time}, "
-                    f"feed_entry_guid => {feed_entry_guid}"
+                    msg=(
+                        "RSS Information gathered: "
+                        f"post_entry => {post_entry}, "
+                        f'feed_entry_link => "{feed_entry_link}", '
+                        f'feed_entry_title => "{feed_entry_title}", '
+                        f"feed_entry_time => {feed_entry_time}, "
+                        f"feed_entry_guid => {feed_entry_guid}"
+                    )
                 )
 
                 if (
@@ -146,8 +159,10 @@ def fetch_rss() -> None:  # pylint: disable=too-many-statements
                     and feed_entry_guid is not None
                 ):
                     logger.info(
-                        "New entry found, posting to Discord channel "
-                        f"{rss_feed.discord_channel}"
+                        msg=(
+                            "New entry found, posting to Discord channel "
+                            f"{rss_feed.discord_channel}"
+                        )
                     )
 
                     if has_last_item is True:
@@ -169,21 +184,24 @@ def fetch_rss() -> None:  # pylint: disable=too-many-statements
 
                     discord_message = f"**{rss_feed.name}**\n{feed_entry_link}"
 
-                    aadiscordbot.tasks.send_channel_message_by_discord_id.delay(
-                        rss_feed.discord_channel.channel,
-                        discord_message,
-                        embed=False,
+                    send_message(
+                        channel_id=rss_feed.discord_channel.channel,
+                        message=discord_message,
                     )
                 else:
                     logger.debug(
-                        f'No item for feed "{rss_feed.name}" to post. '
-                        'Missing either "post_entry" to be "True" or '
-                        'either "feed_entry_link" or "feed_entry_guid" is "None".'
+                        msg=(
+                            f'No item for feed "{rss_feed.name}" to post. '
+                            'Missing either "post_entry" to be "True" or '
+                            'either "feed_entry_link" or "feed_entry_guid" is "None".'
+                        )
                     )
         else:
-            logger.debug("No RSS feeds found to parse.")
+            logger.debug(msg="No RSS feeds found to parse.")
     else:
         logging.info(
-            "AA Discordbot (https://github.com/pvyParts/allianceauth-discordbot) "
-            "needs to be installed and configured."
+            msg=(
+                "AA Discordbot (https://github.com/pvyParts/allianceauth-discordbot) "
+                "needs to be installed and configured."
+            )
         )
