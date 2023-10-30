@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## \[1.8.2\] - 2023-10-30
+
 ### Changed
 
 - Switching away from deprecated discordbot API
