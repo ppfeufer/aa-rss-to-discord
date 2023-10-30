@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 12:21+0200\n"
+"POT-Creation-Date: 2023-10-30 18:34+0100\n"
 "PO-Revision-Date: 2023-09-24 13:13+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -19,18 +19,18 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.0.2\n"
 
-#: models.py:41
+#: aa_rss_to_discord/models.py:41
 msgid "RSS Feed"
 msgstr "RSS-канал"
 
-#: models.py:42
+#: aa_rss_to_discord/models.py:42
 msgid "RSS Feeds"
 msgstr "RSS-канали"
 
-#: models.py:69
+#: aa_rss_to_discord/models.py:69
 msgid "Last Item"
 msgstr "Останній елемент"
 
-#: models.py:70
+#: aa_rss_to_discord/models.py:70
 msgid "Last Items"
 msgstr "Останні Елемети"

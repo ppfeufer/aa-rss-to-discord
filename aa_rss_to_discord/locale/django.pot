@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 12:21+0200\n"
+"POT-Creation-Date: 2023-10-30 18:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:41
+#: aa_rss_to_discord/models.py:41
 msgid "RSS Feed"
 msgstr ""
 
-#: models.py:42
+#: aa_rss_to_discord/models.py:42
 msgid "RSS Feeds"
 msgstr ""
 
-#: models.py:69
+#: aa_rss_to_discord/models.py:69
 msgid "Last Item"
 msgstr ""
 
-#: models.py:70
+#: aa_rss_to_discord/models.py:70
 msgid "Last Items"
 msgstr ""
