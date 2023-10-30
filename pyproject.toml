@@ -6,7 +6,6 @@ requires = [
 
 [project]
 name = "aa-rss-to-discord"
-version = "1.8.1"
 description = "Alliance Auth module to post news from RSS feeds to your Discord"
 readme = "README.md"
 keywords = [
@@ -36,6 +35,9 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
+dynamic = [
+    "version",
+]
 dependencies = [
     "allianceauth>=3",
     "allianceauth-app-utils>=1.14.2",
@@ -59,3 +61,6 @@ Tracker = "https://github.com/ppfeufer/aa-rss-to-discord/issues"
 include = [
     "/aa_rss_to_discord",
 ]
+
+[tool.hatch.version]
+path = "aa_rss_to_discord/__init__.py"
