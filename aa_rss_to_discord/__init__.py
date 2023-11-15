@@ -2,5 +2,8 @@
 App init
 """
 
+# Django
+from django.utils.translation import gettext_lazy as _
+
 __version__ = "1.8.2"
-__title__ = "RSS to Discord"
+__title__ = _("RSS to Discord")

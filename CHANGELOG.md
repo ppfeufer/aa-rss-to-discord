@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Changed
+
+- App title is now translatable
+
 ## \[1.8.2\] - 2023-10-30
 
 ### Changed
