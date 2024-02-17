@@ -2,14 +2,15 @@
 /dist/
 /*.egg-info/
 .idea/
+.tox/
+htmlcov/
+node_modules/
 
 *.log
 *.tmp
 *.bak
 *.old
 __pycache__
-
-/.coverage
-/htmlcov/
-/.tox/
+.coverage
 /coverage.xml
+alliance_auth.sqlite3
