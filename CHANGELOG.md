@@ -35,6 +35,20 @@ Section Order:
 ### Security
 -->
 
+## \[2.0.0-beta.2\] - 2024-02-19
+
+> \[!NOTE\]
+>
+> **This version needs at least Alliance Auth v4.0.0b1!**
+>
+> Please make sure to update your Alliance Auth instance **before**
+> you install this version, otherwise, an update to Alliance Auth will
+> be pulled in unsupervised.
+
+### Fixed
+
+- Project classifier in `pyproject.toml`
+
 ## \[2.0.0-beta.1\] - 2024-02-18
 
 > \[!NOTE\]
