@@ -22,7 +22,7 @@ requires-python = ">=3.8"
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
-    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.2",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
@@ -32,6 +32,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
@@ -39,13 +40,13 @@ dynamic = [
     "version",
 ]
 dependencies = [
-    "allianceauth>=3",
+    "allianceauth>=4.0.0b1",
     "allianceauth-app-utils>=1.14.2",
     "allianceauth-discordbot>=3.0.5",
     "feedparser",
 ]
 [project.optional-dependencies]
-tests-allianceauth-stable = [
+tests-allianceauth-latest = [
     "coverage",
     "django-webtest",
 ]
