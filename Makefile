@@ -1,4 +1,4 @@
-# Makefile for AA Sov Timer
+# Makefile for AA RSS to Discord
 
 appname = aa-rss-to-discord
 appname_verbose = AA RSS to Discord
