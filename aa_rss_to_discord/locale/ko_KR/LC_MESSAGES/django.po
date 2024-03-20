@@ -2,25 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Author50CO <tkddlschry@gmail.com>, 2023.
+# Hue Radient <seataoji@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-15 18:12+0100\n"
-"PO-Revision-Date: 2023-09-24 13:13+0000\n"
-"Last-Translator: Author50CO <tkddlschry@gmail.com>\n"
-"Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-rss-to-discord/ko/>\n"
+"PO-Revision-Date: 2024-03-20 05:11+0000\n"
+"Last-Translator: Hue Radient <seataoji@gmail.com>\n"
+"Language-Team: Korean <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-rss-to-discord/ko/>\n"
 "Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.4.2\n"
 
 #: aa_rss_to_discord/__init__.py:9
 msgid "RSS to Discord"
-msgstr ""
+msgstr "디스코드로 RSS피드보내기"
 
 #: aa_rss_to_discord/models.py:41
 msgid "RSS Feed"
