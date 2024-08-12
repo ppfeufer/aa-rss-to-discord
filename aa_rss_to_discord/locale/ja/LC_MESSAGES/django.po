@@ -1,15 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Anata_no_Usiro <yt23542354m@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-15 18:12+0100\n"
-"PO-Revision-Date: 2024-05-10 14:10+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-08-05 10:10+0000\n"
+"Last-Translator: Anata_no_Usiro <yt23542354m@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-rss-to-discord/ja/>\n"
 "Language: ja\n"
@@ -17,24 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.3\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #: aa_rss_to_discord/__init__.py:9
 msgid "RSS to Discord"
-msgstr ""
+msgstr "RSS から Discord へ"
 
 #: aa_rss_to_discord/models.py:41
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS フィード"
 
 #: aa_rss_to_discord/models.py:42
 msgid "RSS Feeds"
-msgstr ""
+msgstr "複数のRSS フィード"
 
 #: aa_rss_to_discord/models.py:69
 msgid "Last Item"
-msgstr ""
+msgstr "最後のアイテム"
 
 #: aa_rss_to_discord/models.py:70
 msgid "Last Items"
-msgstr ""
+msgstr "複数の最後のアイテム"
