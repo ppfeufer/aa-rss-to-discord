@@ -32,14 +32,6 @@ jobs:
         with:
           python-version-file: 'pyproject.toml' # Read the Python version from the pyproject.toml file
 
-      # Set up Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          # https://endoflife.date/nodejs
-          node-version: '20' # [LTS] End of Life: 30 Apr 2026
-      - run: npm install
-
       - name: Run Pre Commit Checks
         uses: pre-commit/action@v3.0.1
 
