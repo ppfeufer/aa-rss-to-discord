@@ -38,6 +38,16 @@ jobs:
 #        with:
 #          python-version-file: 'pyproject.toml' # Read the Python version from the pyproject.toml file
 
+      # Set up Node.js
+#      - name: Setup Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          # https://endoflife.date/nodejs
+#          node-version: ${{ env.NODE_VERSION }}
+#          cache: 'npm'
+#          cache-dependency-path: 'package-lock.json'
+#      - run: npm install
+
       - name: Run Pre Commit Checks
         uses: pre-commit/action@v3.0.1
 
@@ -55,6 +65,7 @@ jobs:
           - '3.10'  # [EOL] End of Life: 31 Oct 2026
           - '3.11'  # [EOL] End of Life: 31 Dec 2027
           - '3.12'  # [EOL] End of Life: 31 Dec 2028
+          - '3.13'  # [EOL] End of Life: 31 Oct 2029
         # MySQL versions to test against
         database:
           # https://endoflife.date/mysql
