@@ -14,3 +14,5 @@ __pycache__
 .coverage
 /coverage.xml
 alliance_auth.sqlite3
+
+/aa_rss_to_discord/locale/en/

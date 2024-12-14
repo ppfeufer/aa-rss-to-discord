@@ -6,8 +6,8 @@
 # Mickael Gr4vity <patte.mickael@gmail.com>, 2024.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: AA RSS to Discord 2.2.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-rss-to-discord/issues\n"
 "POT-Creation-Date: 2024-09-16 12:34+0200\n"
 "PO-Revision-Date: 2024-08-31 02:58+0000\n"
 "Last-Translator: Mickael Gr4vity <patte.mickael@gmail.com>\n"
