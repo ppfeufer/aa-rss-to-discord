@@ -39,6 +39,10 @@ Section Order:
 
 - Python 3.13 to the test matrix
 
+### Changed
+
+- Set user agent according to MDN guidelines
+
 ## [2.2.0] - 2024-09-16
 
 ### Changed
