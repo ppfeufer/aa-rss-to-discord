@@ -19,20 +19,19 @@ A simple app to post selected RSS feeds to your Discord.
 
 ______________________________________________________________________
 
-<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=2 -->
 
-- [Alliance Auth RSS to Discord](#alliance-auth-rss-to-discord)
-  - [Installation](#installation)
-    - [Step 0.5: Install AA-Discordbot](#step-05-install-aa-discordbot)
-    - [Step 1: Install the Package](#step-1-install-the-package)
-    - [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
-    - [Step 3: Finalizing the Installation](#step-3-finalizing-the-installation)
-    - [Step 4: Configure your RSS Feeds](#step-4-configure-your-rss-feeds)
-  - [Discord Bot Commands](#discord-bot-commands)
-  - [Updating](#updating)
-  - [Changelog](#changelog)
-  - [Translation Status](#translation-status)
-  - [Contributing](#contributing)
+- [Installation](#installation)
+  - [Step 0.5: Install AA-Discordbot](#step-05-install-aa-discordbot)
+  - [Step 1: Install the Package](#step-1-install-the-package)
+  - [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
+  - [Step 3: Finalizing the Installation](#step-3-finalizing-the-installation)
+  - [Step 4: Configure your RSS Feeds](#step-4-configure-your-rss-feeds)
+- [Discord Bot Commands](#discord-bot-commands)
+- [Updating](#updating)
+- [Changelog](#changelog)
+- [Translation Status](#translation-status)
+- [Contributing](#contributing)
 
 <!-- mdformat-toc end -->
 
@@ -104,11 +103,11 @@ The following commands are available for the Discord bot to manage RSS/Atom feed
 
 | Command                         | Options                                                                                   | What it does                                                     |
 | :------------------------------ | :---------------------------------------------------------------------------------------- | :--------------------------------------------------------------- |
-| `!rss_add <rss_url> <rss_name>` | - `rss_url` - The URL of the RSS/Atom feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom feed to the current channel                    |
-| `!rss_delete <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove                            | Remove a RSS/Atom feed from the current Discord channel          |
-| `!rss_disable <rss_feed_id>`    | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable                           | Disable an enabled RSS/Atom feed for the current Discord channel |
-| `!rss_enable <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable                            | Enable a disabled RSS/Atom feed for the current Discord channel  |
-| `!rss_list`                     | None                                                                                      | List all RSS/Atom feeds for the current Discord channel          |
+| `/rss add <rss_url> <rss_name>` | - `rss_url` - The URL of the RSS/Atom feed<br>- `rss_name` - A Name for the RSS/Atom Feed | Adding a RSS/Atom feed to the current channel                    |
+| `/rss delete <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to remove                            | Remove a RSS/Atom feed from the current Discord channel          |
+| `/rss disable <rss_feed_id>`    | `rss_feed_id` - The ID of the RSS/Atom feed you want to disable                           | Disable an enabled RSS/Atom feed for the current Discord channel |
+| `/rss enable <rss_feed_id>`     | `rss_feed_id` - The ID of the RSS/Atom feed you want to enable                            | Enable a disabled RSS/Atom feed for the current Discord channel  |
+| `/rss list`                     | None                                                                                      | List all RSS/Atom feeds for the current Discord channel          |
 
 ## Updating<a name="updating"></a>
 
