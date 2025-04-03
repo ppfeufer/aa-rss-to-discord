@@ -41,6 +41,7 @@ Section Order:
 
 ### Changed
 
+- Switched to slash commands for the Discord bot commands
 - Set user agent according to MDN guidelines
 
 ## [2.2.0] - 2024-09-16

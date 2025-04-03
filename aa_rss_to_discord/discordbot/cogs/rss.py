@@ -6,9 +6,9 @@
 import logging
 
 # Third Party
-import discord
-from aadiscordbot.cogs.utils.decorators import sender_is_admin
+from aadiscordbot import app_settings
 from aadiscordbot.models import Channels, Servers
+from discord.commands import SlashCommandGroup, option
 from discord.ext import commands
 
 # Django
@@ -29,25 +29,39 @@ class Rss(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    @sender_is_admin()
-    async def rss_add(self, ctx, rss_url: str = None, *, rss_name: str = None):
+    admin_commands = SlashCommandGroup(
+        "rss", "RSS Admin Commands", guild_ids=app_settings.get_all_servers()
+    )
+
+    @admin_commands.command(name="add", guild_ids=app_settings.get_all_servers())
+    @option("rss_url", description="The URL to the RSS/Atom feed")
+    @option("rss_name", description="A descriptive name for the RSS/Atom feed")
+    async def rss_add(self, ctx, rss_url: str, rss_name: str):
         """
-        Adding a RSS/Atom feed to the current Discord channel
+        Adding an RSS/Atom feed to the current Discord channel
         """
 
         await ctx.trigger_typing()
 
-        if rss_url is None or rss_name is None:
-            return await ctx.send(
-                "To add a RSS/Atom feed to this channel, "
-                "please use the following syntax.\n\n"
-                "```!rss_add rss_url rss_name```\n\n"
-                "Both arguments are required."
+        if ctx.author.id not in app_settings.get_admins():
+            return await ctx.respond(
+                "You do not have permission to use this command",
+                ephemeral=True,
             )
 
-        channel_name = ctx.message.channel.name
-        channel_id = ctx.message.channel.id
+        if rss_url is None or rss_name is None:
+            return await ctx.respond(
+                (
+                    "To add a RSS/Atom feed to this channel, "
+                    "please use the following syntax.\n\n"
+                    "```/rss add rss_url rss_name```\n\n"
+                    "Both arguments are required."
+                ),
+                ephemeral=True,
+            )
+
+        channel_name = ctx.channel.name
+        channel_id = ctx.channel.id
         server_name = ctx.guild.name
         server_id = ctx.guild.id
 
@@ -57,14 +71,15 @@ class Rss(commands.Cog):
         try:
             validate_url(rss_url)
         except ValidationError:
-            return await ctx.send("The URL provided is not valid!")
+            return await ctx.respond("The URL provided is not valid!", ephemeral=True)
 
         # Check if there is already a RSS/Atom feed with this URL for this channel
         if RssFeeds.objects.filter(
             url__iexact=rss_url, discord_channel_id__exact=channel_id
         ).exists():
-            return await ctx.send(
-                "A RSS/Atom feed with this URL already exists for this channel"
+            return await ctx.respond(
+                "A RSS/Atom feed with this URL already exists for this channel",
+                ephemeral=True,
             )
 
         # Check if the current server and channel are already
@@ -82,10 +97,11 @@ class Rss(commands.Cog):
             url=rss_url, name=rss_name, discord_channel_id=channel_id, enabled=True
         ).save()
 
-        return await ctx.send(f'RSS/Atom feed "{rss_name}" added to this channel')
+        return await ctx.respond(
+            f'RSS/Atom feed "{rss_name}" added to this channel', ephemeral=True
+        )
 
-    @commands.command(pass_context=True)
-    @sender_is_admin()
+    @admin_commands.command(name="list", guild_ids=app_settings.get_all_servers())
     async def rss_list(self, ctx):
         """
         List all RSS/Atom feeds for the current Discord channel
@@ -93,7 +109,13 @@ class Rss(commands.Cog):
 
         await ctx.trigger_typing()
 
-        channel_id = ctx.message.channel.id
+        if ctx.author.id not in app_settings.get_admins():
+            return await ctx.respond(
+                "You do not have permission to use this command",
+                ephemeral=True,
+            )
+
+        channel_id = ctx.channel.id
         payload = "No RSS/Atom feeds have been registered for this channel."
         rss_feeds = RssFeeds.objects.filter(discord_channel_id__exact=channel_id)
 
@@ -114,18 +136,27 @@ class Rss(commands.Cog):
 
             payload += "```"
 
-        return await ctx.send(payload)
+        return await ctx.respond(payload, ephemeral=True)
 
-    @commands.command(pass_context=True)
-    @sender_is_admin()
+    @admin_commands.command(name="delete", guild_ids=app_settings.get_all_servers())
+    @option(
+        "rss_feed_id",
+        description="The ID of the RSS/Atom feed to delete. (Get it from the list command)",
+    )
     async def rss_delete(self, ctx, rss_feed_id: int):
         """
-        Remove a RSS/Atom feed from the current Discord channel
+        Remove an RSS/Atom feed from the current Discord channel
         """
 
         await ctx.trigger_typing()
 
-        channel_id = ctx.message.channel.id
+        if ctx.author.id not in app_settings.get_admins():
+            return await ctx.respond(
+                "You do not have permission to use this command",
+                ephemeral=True,
+            )
+
+        channel_id = ctx.channel.id
 
         try:
             rss_feed = RssFeeds.objects.get(
@@ -142,37 +173,13 @@ class Rss(commands.Cog):
         except RssFeeds.DoesNotExist:
             payload = "This RSS/Atom feed does not exist in this Discord channel."
 
-        return await ctx.send(payload)
+        return await ctx.respond(payload, ephemeral=True)
 
-    @rss_delete.error
-    async def rss_delete_error(self, ctx, error):
-        """
-        Delete error
-
-        :param ctx:
-        :type ctx:
-        :param error:
-        :type error:
-        :return:
-        :rtype:
-        """
-
-        if isinstance(
-            error,
-            (
-                discord.ext.commands.CommandInvokeError,
-                discord.ext.commands.errors.MissingRequiredArgument,
-            ),
-        ):
-            await ctx.send(
-                "You didn't provide a numeric value for the RSS/Atom ID you want to "
-                "remove.\n\nExample:\n```!rss_delete 5```To remove RSS/Atom feed "
-                "wth the ID 5.\nYou find a list of RSS/Atom feeds for this channel "
-                "with `!rss_list`"
-            )
-
-    @commands.command(pass_context=True)
-    @sender_is_admin()
+    @admin_commands.command(name="enable", guild_ids=app_settings.get_all_servers())
+    @option(
+        "rss_feed_id",
+        description="The ID of the RSS/Atom feed to delete. (Get it from the list command)",
+    )
     async def rss_enable(self, ctx, rss_feed_id: int):
         """
         Enable a disabled RSS/Atom feed for the current Discord channel
@@ -180,7 +187,13 @@ class Rss(commands.Cog):
 
         await ctx.trigger_typing()
 
-        channel_id = ctx.message.channel.id
+        if ctx.author.id not in app_settings.get_admins():
+            return await ctx.respond(
+                "You do not have permission to use this command",
+                ephemeral=True,
+            )
+
+        channel_id = ctx.channel.id
 
         try:
             rss_feed = RssFeeds.objects.get(
@@ -196,37 +209,13 @@ class Rss(commands.Cog):
         except RssFeeds.DoesNotExist:
             payload = "This RSS/Atom feed does not exist in this Discord channel."
 
-        return await ctx.send(payload)
+        return await ctx.respond(payload, ephemeral=True)
 
-    @rss_enable.error
-    async def rss_enable_error(self, ctx, error):
-        """
-        Enable error
-
-        :param ctx:
-        :type ctx:
-        :param error:
-        :type error:
-        :return:
-        :rtype:
-        """
-
-        if isinstance(
-            error,
-            (
-                discord.ext.commands.CommandInvokeError,
-                discord.ext.commands.errors.MissingRequiredArgument,
-            ),
-        ):
-            await ctx.send(
-                "You didn't provide a numeric value for the RSS/Atom ID you want to "
-                "enable.\n\nExample:\n```!rss_enable 5```To enable RSS/Atom feed wth "
-                "the ID 5.\nYou find a list of RSS/Atom feeds for this channel "
-                "with `!rss_list`"
-            )
-
-    @commands.command(pass_context=True)
-    @sender_is_admin()
+    @admin_commands.command(name="disable", guild_ids=app_settings.get_all_servers())
+    @option(
+        "rss_feed_id",
+        description="The ID of the RSS/Atom feed to delete. (Get it from the list command)",
+    )
     async def rss_disable(self, ctx, rss_feed_id: int):
         """
         Disable an enabled RSS/Atom feed for the current Discord channel
@@ -234,7 +223,13 @@ class Rss(commands.Cog):
 
         await ctx.trigger_typing()
 
-        channel_id = ctx.message.channel.id
+        if ctx.author.id not in app_settings.get_admins():
+            return await ctx.respond(
+                "You do not have permission to use this command",
+                ephemeral=True,
+            )
+
+        channel_id = ctx.channel.id
 
         try:
             rss_feed = RssFeeds.objects.get(
@@ -250,34 +245,7 @@ class Rss(commands.Cog):
         except RssFeeds.DoesNotExist:
             payload = "This RSS/Atom feed does not exist in this Discord channel."
 
-        return await ctx.send(payload)
-
-    @rss_disable.error
-    async def rss_disable_error(self, ctx, error):
-        """
-        Disable error
-
-        :param ctx:
-        :type ctx:
-        :param error:
-        :type error:
-        :return:
-        :rtype:
-        """
-
-        if isinstance(
-            error,
-            (
-                discord.ext.commands.CommandInvokeError,
-                discord.ext.commands.errors.MissingRequiredArgument,
-            ),
-        ):
-            await ctx.send(
-                "You didn't provide a numeric value for the RSS/Atom ID you want to "
-                "enable.\n\nExample:\n```!rss_disable 5```To disable RSS/Atom feed "
-                "wth the ID 5.\nYou find a list of RSS/Atom feeds for this channel "
-                "with `!rss_list`"
-            )
+        return await ctx.respond(payload, ephemeral=True)
 
 
 def setup(bot):
