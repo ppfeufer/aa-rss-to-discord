@@ -41,7 +41,7 @@ Section Order:
 
 ### Changed
 
-- Switched to slash commands for the Discord bot commands
+- Switched to slash commands for the Discord bot commands (See [Discord Bot Commands](https://github.com/ppfeufer/aa-rss-to-discord#discord-bot-commands))
 - Set user agent according to MDN guidelines
 
 ## [2.2.0] - 2024-09-16
