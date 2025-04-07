@@ -6,7 +6,7 @@
 # Set the default language versions for the hooks
 default_language_version:
   python: python3  # Force all Python hooks to use Python 3
-  node: 22.13.1  # Force all Node hooks to use Node LTS latest
+  node: 22.13.1  # Force all Node hooks to use the latest Node LTS
 
 # https://pre-commit.ci/
 ci:
@@ -253,7 +253,7 @@ repos:
         args:
           - --indent=4
         additional_dependencies:
-          - tox==4.24.1  # https://github.com/tox-dev/tox/releases/latest
+          - tox==4.25.0  # https://github.com/tox-dev/tox/releases/latest
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: 78f5e0f104cfa803d0597eaa924b4de3becd3e3e  # frozen: v0.24.1
