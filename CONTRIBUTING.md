@@ -105,7 +105,7 @@ This repository uses [pre-commit] to verify compliance with formatting / linting
 To use:
 
 - Install `pre-commit` to your system.
-- Run' pre-commit install' inside the app's root directory.
+- Run `pre-commit install` inside the app's root directory.
 - You're all done! Code will be checked automatically using git hooks.
 
 You can check if your code to commit adheres to the given style by simply running:
