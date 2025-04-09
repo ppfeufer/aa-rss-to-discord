@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Added
+
+- Type hinting for managers
+
 ## [2.3.0] - 2025-04-07
 
 ### Added
