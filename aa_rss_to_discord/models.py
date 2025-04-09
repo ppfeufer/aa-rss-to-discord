@@ -2,6 +2,9 @@
 Our Models
 """
 
+# Standard Library
+from typing import ClassVar
+
 # Third Party
 from aadiscordbot.models import Channels
 
@@ -30,7 +33,7 @@ class RssFeeds(models.Model):
     )
     enabled = models.BooleanField(default=True)
 
-    objects = RssFeedsManager()
+    objects: ClassVar[RssFeedsManager] = RssFeedsManager()
 
     class Meta:
         """
