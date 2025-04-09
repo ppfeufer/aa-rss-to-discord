@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA RSS to Discord 2.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-rss-to-discord/issues\n"
-"POT-Creation-Date: 2025-04-07 06:03+0200\n"
+"POT-Creation-Date: 2025-04-09 11:40+0200\n"
 "PO-Revision-Date: 2024-08-05 10:10+0000\n"
 "Last-Translator: Anata_no_Usiro <yt23542354m@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-rss-to-discord/ja/>\n"
@@ -21,18 +21,18 @@ msgstr ""
 msgid "RSS to Discord"
 msgstr "RSS から Discord へ"
 
-#: aa_rss_to_discord/models.py:41
+#: aa_rss_to_discord/models.py:44
 msgid "RSS Feed"
 msgstr "RSS フィード"
 
-#: aa_rss_to_discord/models.py:42
+#: aa_rss_to_discord/models.py:45
 msgid "RSS Feeds"
 msgstr "複数のRSS フィード"
 
-#: aa_rss_to_discord/models.py:69
+#: aa_rss_to_discord/models.py:72
 msgid "Last Item"
 msgstr "最後のアイテム"
 
-#: aa_rss_to_discord/models.py:70
+#: aa_rss_to_discord/models.py:73
 msgid "Last Items"
 msgstr "複数の最後のアイテム"
