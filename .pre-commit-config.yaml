@@ -160,7 +160,7 @@ repos:
         description: Check for compliance with the definitions in the EditorConfig file.
 
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: 50d352812a07a85c73192ebe6459fab660f9c936  # frozen: 1.24.0
+    rev: 700530171ecf380bc829a64388f49d14ecd61c53  # frozen: 1.25.0
     hooks:
       - id: django-upgrade
         name: Django upgrade
@@ -169,7 +169,7 @@ repos:
           - --target-version=4.2  # Minimum supported Django version for AA. Update as needed.
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: ce40a160603ab0e7d9c627ae33d7ef3906e2d2b2  # frozen: v3.19.1
+    rev: 37bfa06d791fd38fb4e54910b36a2ff57641b074  # frozen: v3.20.0
     hooks:
       - id: pyupgrade
         name: PyUpgrade
@@ -245,7 +245,7 @@ repos:
         description: Format the tox.ini file.
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 57b6ff7bf72affdd12c7f3fd6de761ba18a33b3a  # frozen: v2.5.1
+    rev: 8184a5b72f4a8fcd003b041ecb04c41a9f34fd2b  # frozen: v2.6.0
     hooks:
       - id: pyproject-fmt
         name: pyproject.toml formatter
