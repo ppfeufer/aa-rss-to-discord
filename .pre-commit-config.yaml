@@ -238,7 +238,7 @@ repos:
           - mdformat-shfmt==0.2.0  # Mdformat plugin to format shell code blocks » https://github.com/hukkin/mdformat-shfmt/tags
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: e732f664aa3fd7b32cce3de8abbac43f4c3c375d  # frozen: 1.5.0
+    rev: 4e2cb0e98735e1a57a027d9440b91663e31d10b0  # frozen: 1.6.0
     hooks:
       - id: tox-ini-fmt
         name: tox.ini formatter
