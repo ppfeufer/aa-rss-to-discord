@@ -35,9 +35,12 @@ Section Order:
 ### Security
 -->
 
+## [2.3.3] - 2025-08-05
+
 ### Changed
 
 - Constants and user agent cleanup
+- Translations updated
 
 ## [2.3.2] - 2025-05-05
 
