@@ -4,20 +4,21 @@
 # Peter Pfeufer <info@ppfeufer.de>, 2024.
 # Houbi_Houba <paul.lacape@live.fr>, 2024.
 # Mickael Gr4vity <patte.mickael@gmail.com>, 2024.
+# The “Devcutter” Guy <mick162534@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA RSS to Discord 2.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-rss-to-discord/issues\n"
-"POT-Creation-Date: 2025-05-05 23:45+0200\n"
-"PO-Revision-Date: 2024-08-31 02:58+0000\n"
-"Last-Translator: Mickael Gr4vity <patte.mickael@gmail.com>\n"
+"POT-Creation-Date: 2025-08-05 10:15+0200\n"
+"PO-Revision-Date: 2025-08-03 04:24+0000\n"
+"Last-Translator: The “Devcutter” Guy <mick162534@gmail.com>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-rss-to-discord/fr/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7\n"
+"X-Generator: Weblate 5.12.2\n"
 
 #: aa_rss_to_discord/__init__.py:9
 msgid "RSS to Discord"
@@ -37,4 +38,4 @@ msgstr "Dernier objet"
 
 #: aa_rss_to_discord/models.py:73
 msgid "Last Items"
-msgstr ""
+msgstr "Derniers éléments"
