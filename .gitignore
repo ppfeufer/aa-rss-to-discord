@@ -16,3 +16,5 @@ __pycache__
 alliance_auth.sqlite3
 
 /aa_rss_to_discord/locale/en/
+.esi-compatibility-date
+.make/myauth-path
