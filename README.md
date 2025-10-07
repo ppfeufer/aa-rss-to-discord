@@ -60,7 +60,7 @@ Make sure you're in the virtual environment (venv) of your Alliance Auth
 installation Then install the latest release directly from PyPi.
 
 ```shell
-pip install aa-rss-to-discord
+pip install aa-rss-to-discord==2.3.4
 ```
 
 ### Step 2: Configure Alliance Auth<a name="step-2-configure-alliance-auth"></a>
@@ -115,7 +115,7 @@ To update your existing installation of Alliance Auth RSS to Discord, first enab
 virtual environment (venv) of your Alliance Auth installation.
 
 ```bash
-pip install -U aa-rss-to-discord
+pip install aa-rss-to-discord==2.3.4
 
 python manage.py migrate
 ```
