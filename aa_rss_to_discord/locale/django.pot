@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA RSS to Discord 2.3.4\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-rss-to-discord/issues\n"
-"POT-Creation-Date: 2025-10-07 11:05+0200\n"
+"POT-Creation-Date: 2025-10-23 15:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: aa_rss_to_discord/__init__.py:9
+#: aa_rss_to_discord/__init__.py:10
 msgid "RSS to Discord"
 msgstr ""
 

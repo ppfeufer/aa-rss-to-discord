@@ -42,6 +42,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- Use translated title in Django admin backend
+
 ## [2.3.4] - 2025-10-07
 
 ### Changed
