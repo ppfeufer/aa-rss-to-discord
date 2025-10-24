@@ -49,11 +49,13 @@ optional-dependencies.tests-allianceauth-latest = [
     "django-webtest",
 ]
 urls.Changelog = "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CHANGELOG.md"
+urls.Codecov = "https://codecov.io/gh/ppfeufer/aa-rss-to-discord"
+urls.Discord = "https://discord.gg/fjnHAmk"
 urls.Documentation = "https://github.com/ppfeufer/aa-rss-to-discord/blob/master/README.md"
-urls.Donations = "https://ko-fi.com/ppfeufer"
-urls.Homepage = "https://github.com/ppfeufer/aa-rss-to-discord"
-urls.Source = "https://github.com/ppfeufer/aa-rss-to-discord.git"
+urls.Donation = "https://ko-fi.com/ppfeufer"
+urls.GitHub = "https://github.com/ppfeufer/aa-rss-to-discord"
 urls.Tracker = "https://github.com/ppfeufer/aa-rss-to-discord/issues"
+urls.Translation = "https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-rss-to-discord/"
 
 [tool.hatch.build]
 include = [
