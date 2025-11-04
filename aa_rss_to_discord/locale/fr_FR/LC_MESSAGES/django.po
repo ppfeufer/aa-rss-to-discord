@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA RSS to Discord 2.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-rss-to-discord/issues\n"
-"POT-Creation-Date: 2025-10-07 11:05+0200\n"
+"POT-Creation-Date: 2025-11-04 13:29+0100\n"
 "PO-Revision-Date: 2025-08-03 04:24+0000\n"
 "Last-Translator: The “Devcutter” Guy <mick162534@gmail.com>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-rss-to-discord/fr/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.12.2\n"
 
-#: aa_rss_to_discord/__init__.py:9
+#: aa_rss_to_discord/__init__.py:10
 msgid "RSS to Discord"
 msgstr "RSS vers Discord"
 
