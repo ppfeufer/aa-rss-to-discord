@@ -42,9 +42,15 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [2.3.5] - 2025-11-04
+
 ### Fixed
 
 - Use translated title in Django admin backend
+
+### Changed
+
+- Translations updated
 
 ## [2.3.4] - 2025-10-07
 
@@ -410,6 +416,7 @@ Run migrations after updating as usual.
 [2.3.2]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.1...v2.3.2 "v2.3.2"
 [2.3.3]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.2...v2.3.3 "v2.3.3"
 [2.3.4]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.3...v2.3.4 "v2.3.4"
-[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.4...HEAD "In Development"
+[2.3.5]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.4...v2.3.5 "v2.3.5"
+[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.5...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
