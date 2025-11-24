@@ -8,7 +8,7 @@ from django.db import models
 
 class RssFeedsManager(models.Manager):
     """
-    AFatManager
+    RssFeedsManager
     """
 
     def select_enabled(self):

@@ -40,7 +40,6 @@ dynamic = [
 ]
 dependencies = [
     "allianceauth>=4.3.1,<5",
-    "allianceauth-app-utils>=1.14.2",
     "allianceauth-discordbot>=3.0.5",
     "feedparser",
 ]
