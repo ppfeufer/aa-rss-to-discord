@@ -42,6 +42,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Changed
+
+- Task code refactored
+
 ### Removed
 
 - `allianceauth-app-utils` as dependency
