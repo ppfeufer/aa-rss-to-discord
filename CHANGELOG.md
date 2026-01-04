@@ -42,6 +42,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Changed
+
+- Process RSS feeds in parallel to speed up processing time
+
 ## [2.4.0] - 2025-12-02
 
 ### Changed

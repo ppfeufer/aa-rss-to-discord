@@ -8,7 +8,7 @@ import re
 # Third Party
 import feedparser
 from aadiscordbot.tasks import send_message
-from celery import shared_task
+from celery import group, shared_task
 
 # Alliance Auth
 from allianceauth.services.hooks import get_extension_logger
@@ -23,15 +23,15 @@ from aa_rss_to_discord.providers import AppLogger
 logger = AppLogger(get_extension_logger(__name__), __title__)
 
 
-def remove_emoji(string):
+def remove_emoji(string: str) -> str:
     """
     Removing these dumb as fuck emojis from the title string.
     Like honestly, who in the hell needs that shit?
 
-    :param string:
-    :type string:
-    :return:
-    :rtype:
+    :param string: Input string
+    :type string: str
+    :return: String without emojis
+    :rtype: str
     """
 
     emoji_pattern = re.compile(
@@ -64,68 +64,91 @@ def remove_emoji(string):
 @shared_task(**{"base": QueueOnce})
 def fetch_rss() -> None:
     """
-    Fetch RSS feeds and post new entries to Discord channels.
+    Fetch all enabled RSS feeds and dispatch processing tasks.
 
-    :return:
-    :rtype:
+    :return: None
+    :rtype: None
     """
 
     rss_feeds = RssFeeds.objects.select_enabled()
-
     if not rss_feeds:
         logger.debug("No RSS feeds found to parse.")
-
         return
 
-    for rss_feed in rss_feeds:
-        logger.info(f'Fetching RSS Feed "{rss_feed.name}"')
-        feed = feedparser.parse(rss_feed.url, agent=USER_AGENT)
+    feed_ids = [f.id for f in rss_feeds]
+    if not feed_ids:
+        logger.debug("No RSS feed ids to dispatch.")
+        return
 
-        try:
-            latest_entry = feed.entries[0]
-            feed_entry_title = remove_emoji(latest_entry.get("title", "No title"))
-            feed_entry_link = latest_entry.get("link")
-            feed_entry_time = latest_entry.get("published", latest_entry.updated)
-            feed_entry_guid = latest_entry.get("id")
-        except (AttributeError, IndexError) as exc:
-            logger.debug(f'Error processing feed "{rss_feed.name}": {exc}')
+    group(_process_feed.s(fid) for fid in feed_ids).apply_async()
 
-            continue
 
-        try:
-            last_item = LastItem.objects.get(rss_feed=rss_feed)
-            is_duplicate = (
-                last_item.rss_item_time == feed_entry_time
-                and last_item.rss_item_title == feed_entry_title
-                and last_item.rss_item_link == feed_entry_link
-                and last_item.rss_item_guid == feed_entry_guid
-            )
+@shared_task
+def _process_feed(rss_feed_id: int) -> None:
+    """
+    Process a single RSS feed by fetching its latest entry and posting to Discord if it's new.
 
-            if is_duplicate:
-                logger.debug(
-                    f'News item "{feed_entry_title}" for RSS Feed "{rss_feed.name}" '
-                    "has already been posted to your Discord"
-                )
+    :param rss_feed_id: ID of the RSS feed to process
+    :type rss_feed_id: int
+    :return: None
+    :rtype: None
+    """
 
-                continue
-        except LastItem.DoesNotExist:
-            logger.debug("This seems to be a completely new RSS feed.")
-
-        logger.info(
-            f"New entry found, posting to Discord channel {rss_feed.discord_channel}"
+    try:
+        rss_feed = RssFeeds.objects.select_related("discord_channel").get(
+            id=rss_feed_id
         )
+    except RssFeeds.DoesNotExist:
+        logger.debug("RSS feed %s not found", rss_feed_id)
+        return
 
-        LastItem.objects.update_or_create(
-            rss_feed=rss_feed,
-            defaults={
-                "rss_item_time": feed_entry_time,
-                "rss_item_title": feed_entry_title,
-                "rss_item_link": feed_entry_link,
-                "rss_item_guid": feed_entry_guid,
-            },
-        )
+    logger.info(f'Fetching RSS Feed "{rss_feed.name}"')
+    feed = feedparser.parse(rss_feed.url, agent=USER_AGENT)
 
-        send_message(
-            channel_id=rss_feed.discord_channel.channel,
-            message=f"**{rss_feed.name}**\n{feed_entry_link}",
+    latest_entry = next(iter(getattr(feed, "entries", [])), None)
+    if not latest_entry:
+        logger.debug(f'No entries found for feed "{rss_feed.name}".')
+        return
+
+    feed_entry_title = remove_emoji(latest_entry.get("title", "No title"))
+    feed_entry_link = latest_entry.get("link")
+    feed_entry_time = latest_entry.get("published", latest_entry.get("updated"))
+    feed_entry_guid = latest_entry.get("id")
+
+    last_item = LastItem.objects.filter(rss_feed=rss_feed).first()
+    if last_item and (
+        last_item.rss_item_time,
+        last_item.rss_item_title,
+        last_item.rss_item_link,
+        last_item.rss_item_guid,
+    ) == (feed_entry_time, feed_entry_title, feed_entry_link, feed_entry_guid):
+        logger.debug(
+            'News item "%s" for RSS Feed "%s" has already been posted to your Discord',
+            feed_entry_title,
+            rss_feed.name,
         )
+        return
+
+    if not last_item:
+        logger.debug("This seems to be a completely new RSS feed: %s", rss_feed.name)
+
+    logger.info(
+        'New entry found for RSS feed "%s", posting to Discord channel %s',
+        rss_feed.name,
+        rss_feed.discord_channel,
+    )
+
+    LastItem.objects.update_or_create(
+        rss_feed=rss_feed,
+        defaults={
+            "rss_item_time": feed_entry_time,
+            "rss_item_title": feed_entry_title,
+            "rss_item_link": feed_entry_link,
+            "rss_item_guid": feed_entry_guid,
+        },
+    )
+
+    send_message(
+        channel_id=rss_feed.discord_channel.channel,
+        message=f"**{rss_feed.name}**\n{feed_entry_link}",
+    )
