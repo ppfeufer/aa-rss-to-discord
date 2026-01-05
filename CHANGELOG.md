@@ -42,9 +42,12 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [2.5.0] - 2026-01-05
+
 ### Changed
 
 - Process RSS feeds in parallel to speed up processing time
+- Translations updated
 
 ## [2.4.0] - 2025-12-02
 
@@ -432,6 +435,7 @@ Run migrations after updating as usual.
 [2.3.4]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.3...v2.3.4 "v2.3.4"
 [2.3.5]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.4...v2.3.5 "v2.3.5"
 [2.4.0]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.5...v2.4.0 "v2.4.0"
-[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.4.0...HEAD "In Development"
+[2.5.0]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.4.0...v2.5.0 "v2.5.0"
+[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.5.0...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
