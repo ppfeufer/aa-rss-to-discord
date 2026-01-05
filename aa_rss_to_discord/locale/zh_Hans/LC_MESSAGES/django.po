@@ -1,39 +1,38 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# AKA Patrick <hsc844766246@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA RSS to Discord 2.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-rss-to-discord/issues\n"
-"POT-Creation-Date: 2025-12-02 08:06+0100\n"
-"PO-Revision-Date: 2024-05-10 14:10+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Chinese (Simplified) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-rss-to-discord/zh_Hans/>\n"
+"POT-Creation-Date: 2026-01-05 22:28+0100\n"
+"PO-Revision-Date: 2025-12-08 09:17+0000\n"
+"Last-Translator: AKA Patrick <hsc844766246@gmail.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-rss-to-discord/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.3\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #: aa_rss_to_discord/__init__.py:10
 msgid "RSS to Discord"
-msgstr ""
+msgstr "链接Discord的Rss"
 
 #: aa_rss_to_discord/models.py:44
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS源"
 
 #: aa_rss_to_discord/models.py:45
 msgid "RSS Feeds"
-msgstr ""
+msgstr "RSS源"
 
 #: aa_rss_to_discord/models.py:72
 msgid "Last Item"
-msgstr ""
+msgstr "最后一项"
 
 #: aa_rss_to_discord/models.py:73
 msgid "Last Items"
-msgstr ""
+msgstr "最后几项"
