@@ -39,10 +39,10 @@ dynamic = [
     "version",
 ]
 dependencies = [
-    "allianceauth>=4.3.1,<5",
+    "allianceauth>=4.3.1",
     "allianceauth-discordbot>=3.0.5",
     "feedparser",
-    "py-cord>=2.7.0rc2; python_version>='3.13'",
+    "py-cord>=2.7.1",
 ]
 optional-dependencies.tests-allianceauth-latest = [
     "coverage",
