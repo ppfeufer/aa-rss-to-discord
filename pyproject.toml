@@ -57,10 +57,8 @@ urls.GitHub = "https://github.com/ppfeufer/aa-rss-to-discord"
 urls.Tracker = "https://github.com/ppfeufer/aa-rss-to-discord/issues"
 urls.Translation = "https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-rss-to-discord/"
 
-[tool.hatch.build]
-include = [
+[tool.hatch]
+build.include = [
     "/aa_rss_to_discord",
 ]
-
-[tool.hatch.version]
-path = "aa_rss_to_discord/__init__.py"
+version.path = "aa_rss_to_discord/__init__.py"
