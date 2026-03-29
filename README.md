@@ -7,11 +7,12 @@
 ![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/ppfeufer/aa-rss-to-discord/master.svg)](https://results.pre-commit.ci/latest/github/ppfeufer/aa-rss-to-discord/master)
 [![Code Style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](http://black.readthedocs.io/en/latest/)
-[![Discord](https://img.shields.io/discord/399006117012832262?label=discord)](https://discord.gg/fjnHAmk)
 [![Checks](https://github.com/ppfeufer/aa-rss-to-discord/actions/workflows/automated-checks.yml/badge.svg)](https://github.com/ppfeufer/aa-rss-to-discord/actions/workflows/automated-checks.yml)
 [![codecov](https://codecov.io/gh/ppfeufer/aa-rss-to-discord/branch/master/graph/badge.svg?token=LVEQ6W55ZB)](https://codecov.io/gh/ppfeufer/aa-rss-to-discord)
 [![Badge: Translation Status]][weblate engage]
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/ppfeufer/aa-rss-to-discord/blob/master/CODE_OF_CONDUCT.md)
+[![Discord](https://img.shields.io/discord/399006117012832262?label=discord)](https://discord.gg/fjnHAmk)
+[![Alliance Auth Compatibility](https://img.shields.io/badge/Alliance_Auth-v4_%7C_v5-brightgreen)](https://gitlab.com/allianceauth/allianceauth)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N8CL1BY)
 
