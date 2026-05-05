@@ -43,6 +43,12 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [2.5.2] - 2026-05-05
+
+### Miscellaneous
+
+- Ready for Alliance Auth v5
+
 ## [2.5.1] - 2026-02-03
 
 ### Changed
@@ -444,6 +450,7 @@ Run migrations after updating as usual.
 [2.4.0]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.3.5...v2.4.0 "v2.4.0"
 [2.5.0]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.4.0...v2.5.0 "v2.5.0"
 [2.5.1]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.5.0...v2.5.1 "v2.5.1"
-[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.5.1...HEAD "In Development"
+[2.5.2]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.5.1...v2.5.2 "v2.5.2"
+[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.5.2...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
