@@ -43,6 +43,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Removed
+
+- Direct dependency, already covered by `allianceauth-discordbot`
+
 ## [2.5.2] - 2026-05-05
 
 ### Miscellaneous
