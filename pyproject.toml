@@ -43,7 +43,6 @@ dependencies = [
     "allianceauth>=4.3.1",
     "allianceauth-discordbot>=3.0.5",
     "feedparser",
-    "py-cord>=2.7.1",
 ]
 optional-dependencies.tests-allianceauth-latest = [
     "coverage",
