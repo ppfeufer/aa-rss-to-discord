@@ -200,7 +200,7 @@ repos:
         description: Check for black disable comments.
 
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: fa505ab9c3e0fedafe1709fd7ac2b5f8996c670d  # frozen: 26.3.1
+    rev: 4160603246a6b365d4a2af661c6d71b0a0f50478  # frozen: 26.5.1
     hooks:
       - id: black
         name: Black
@@ -239,7 +239,7 @@ repos:
         description: Format the tox.ini file.
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 91de51aef61c5f2383f03da25604e3d65a8309e0  # frozen: v2.21.1
+    rev: 3a8ef795727fa946dfcb21c5d07b1442c2362c09  # frozen: v2.23.0
     hooks:
       - id: pyproject-fmt
         name: pyproject.toml formatter
