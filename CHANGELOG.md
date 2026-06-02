@@ -43,6 +43,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Changed
+
+- Modular providers
+
 ### Removed
 
 - Direct dependency, already covered by `allianceauth-discordbot`

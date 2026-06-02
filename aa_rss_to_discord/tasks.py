@@ -15,12 +15,11 @@ from allianceauth.services.hooks import get_extension_logger
 from allianceauth.services.tasks import QueueOnce
 
 # AA RSS to Discord
-from aa_rss_to_discord import __title__
 from aa_rss_to_discord.constants import USER_AGENT
 from aa_rss_to_discord.models import LastItem, RssFeeds
-from aa_rss_to_discord.providers import AppLogger
+from aa_rss_to_discord.providers.applogger import AppLogger
 
-logger = AppLogger(get_extension_logger(__name__), __title__)
+logger = AppLogger(get_extension_logger(__name__))
 
 
 def remove_emoji(string: str) -> str:
