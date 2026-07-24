@@ -52,8 +52,8 @@ class TestFetchRss(BaseTestCase):
             ) as mock_select_enabled,
             patch("aa_rss_to_discord.tasks.group") as mock_group,
         ):
-            mock_rss_feed_1 = MagicMock(id=1)
-            mock_rss_feed_2 = MagicMock(id=2)
+            mock_rss_feed_1 = MagicMock(pk=1)
+            mock_rss_feed_2 = MagicMock(pk=2)
             mock_select_enabled.return_value = [mock_rss_feed_1, mock_rss_feed_2]
 
             fetch_rss()

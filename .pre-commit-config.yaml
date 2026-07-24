@@ -6,7 +6,7 @@
 # Set the default language versions for the hooks
 default_language_version:
   python: python3  # Force all Python hooks to use Python 3
-  node: 24.14.0  # Force all Node hooks to use this specific Node version
+  node: 26.3.0  # Force all Node hooks to use this specific Node version
 
 # https://pre-commit.ci/
 ci:
@@ -67,7 +67,7 @@ repos:
         name: Check for large files
         description: Check for large files that were added to the repository.
         args:
-          - --maxkb=1000
+          - --maxkb=2048  # 2 MB
 
       - id: detect-private-key
         name: Detect private key
