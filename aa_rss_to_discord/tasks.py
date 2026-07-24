@@ -74,7 +74,7 @@ def fetch_rss() -> None:
         logger.debug("No RSS feeds found to parse.")
         return
 
-    feed_ids = [f.id for f in rss_feeds]
+    feed_ids = [f.pk for f in rss_feeds]
     if not feed_ids:
         logger.debug("No RSS feed ids to dispatch.")
         return
