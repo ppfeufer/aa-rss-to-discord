@@ -12,18 +12,23 @@ Highlighting:
 https://docs.github.com/assets/cb-41128/mw-1440/images/help/writing/alerts-rendered.webp
 
 > [!NOTE]
+>
 > Highlights information that users should take into account, even when skimming.
 
 > [!TIP]
+>
 > Optional information to help a user be more successful.
 
 > [!IMPORTANT]
+>
 > Crucial information necessary for users to succeed.
 
 > [!WARNING]
+>
 > Urgent info that needs immediate user attention to avoid problems.
 
 > [!CAUTION]
+>
 > Advised about risks or negative outcomes of certain actions.
 -->
 
@@ -42,6 +47,8 @@ Section Order:
 -->
 
 <!-- Your changes go here -->
+
+## [3.1.0] - 2026-08-04
 
 ### Changed
 
@@ -491,6 +498,7 @@ Run migrations after updating as usual.
 [2.6.0]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.5.2...v2.6.0 "v2.6.0"
 [3.0.0]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v2.6.0...v3.0.0 "v3.0.0"
 [3.0.1]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v3.0.0...v3.0.1 "v3.0.1"
-[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v3.0.1...HEAD "In Development"
+[3.1.0]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v3.0.1...v3.1.0 "v3.1.0"
+[in development]: https://github.com/ppfeufer/aa-rss-to-discord/compare/v3.1.0...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
