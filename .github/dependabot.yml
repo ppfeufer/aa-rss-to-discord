@@ -28,7 +28,7 @@ updates:
       # Prefix all commit messages with "[pip] "
       prefix: "[pip] "
 
-#  # Maintain dependencies for Node.js
+  # Maintain dependencies for Node.js
 #  - package-ecosystem: "npm"
 #    directory: "/"
 #    target-branch: "master"
