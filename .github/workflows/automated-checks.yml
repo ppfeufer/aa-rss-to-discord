@@ -40,7 +40,7 @@ jobs:
 
       # Set up Node.js
 #      - name: Setup Node.js
-#        uses: actions/setup-node@v6
+#        uses: actions/setup-node@v7
 #        with:
 #          # https://endoflife.date/nodejs
 #          node-version: ${{ env.NODE_VERSION }}
@@ -62,7 +62,6 @@ jobs:
       matrix:
         python-version:
           # https://endoflife.date/python
-          - '3.10'  # [EOL] End of Life: 31 Oct 2026
           - '3.11'  # [EOL] End of Life: 31 Dec 2027
           - '3.12'  # [EOL] End of Life: 31 Dec 2028
           - '3.13'  # [EOL] End of Life: 31 Oct 2029
