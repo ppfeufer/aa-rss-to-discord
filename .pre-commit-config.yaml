@@ -215,7 +215,7 @@ repos:
         name: Blacken docs
         description: Format Python code in documentation files.
         additional_dependencies:
-          - black==26.10.0  # https://github.com/psf/black/releases/latest
+          - black==26.10.1  # https://github.com/psf/black/releases/latest
         args:
           - --target-version=py311  # Minimum required Python version for AA. Update as needed.
 
@@ -247,7 +247,7 @@ repos:
         args:
           - --indent=4
         additional_dependencies:
-          - tox==4.64.9  # https://github.com/tox-dev/tox/releases/latest
+          - tox==4.67.7  # https://github.com/tox-dev/tox/releases/latest
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: 82d21874c3242e4dc27bb47641c996902ef64eef  # frozen: v0.27
